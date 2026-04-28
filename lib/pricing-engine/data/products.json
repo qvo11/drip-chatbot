@@ -1,0 +1,227 @@
+[
+    {
+        "id": "PC450",
+        "name": "Port & Co Fan Favorite Tee",
+        "category": "tshirt",
+        "description":"Cost-effective option, designed for softness and durability, and for sports enthusiasts.",
+        "base_cost": 2.89,
+        "attributes": {
+            "material": "100% ringspun cotton",
+            "weight": "4.5 oz."
+        },
+        "best_for": ["schools", "casual wear", "corporate"],
+        "decoration_compatibility": ["screen_print", "dtg"]
+    },
+    {
+        "id": "64000",
+        "name": "Gildan Softstyle T-Shirt",
+        "category": "tshirt",
+        "description": "A soft, lightweight t-shirt with a basic fit. It's a great choice for those looking for a comfortable option.",
+        "base_cost": 3.05,
+        "attributes": {
+            "material": "100% ringspun cotton",
+            "weight": "4.5 oz."
+        },
+        "best_for": ["schools", "casual wear", "corporate"],
+        "decoration_compatibility": ["screen_print", "dtg"]
+    },
+    {
+        "id": "PC54",
+        "name": "Port & Co Core Cotton Tee",
+        "description": "An indispensable midweight t-shirt in our classic silhouette—with a large color range and very friendly price. It's a go-to choice for everyday wear.",
+        "category": "tshirt",
+        "base_cost": 2.89,
+        "attributes": {
+            "material": "100% cotton",
+            "weight": "5.4 oz."
+        },
+        "best_for": ["schools", "casual wear", "corporate"],
+        "decoration_compatibility": ["screen_print", "dtg"]
+    },
+    {
+        "id": "PC61",
+        "name": "Port & Co Essential Tee",
+        "description": "A year-round essential, our best-selling t-shirt has been voted most popular by groups, teams, clubs and schools across America.",
+        "category": "tshirt",
+        "base_cost": 3.02,
+        "attributes": {
+            "material": "100% soft spun cotton",
+            "weight": "6.1 oz."
+        },
+        "best_for": ["schools", "casual wear", "corporate"],
+        "decoration_compatibility": ["screen_print", "dtg"]
+    },
+    {
+        "id": "NL6210",
+        "name": "Next Level Apparel Adult CVC Tee",
+        "description": "Known for its soft, lightweight, and durable material",
+        "category": "tshirt",
+        "base_cost": 3.89,
+        "attributes": {
+            "material": "60/40 combed ring spun cottom/polyester",
+            "weight": "4.3 oz."
+        },
+        "best_for": ["schools", "casual wear", "corporate", "retail"],
+        "decoration_compatibility": ["screen_print"]
+    },
+    {
+        "id": "DM130",
+        "name": "District Perfert Tri Tee",
+        "description": "Perfect easygoing look",
+        "category": "tshirt",
+        "base_cost": 3.99,
+        "attributes": {
+            "material": "50/25/25 polyester/combed ring spun cotton/rayon",
+            "weight": "4.5 oz."
+        },
+        "best_for": ["teams", "retail", "corporate"],
+        "decoration_compatibility": ["screen_print"]
+    },
+    {
+        "id": "5001",
+        "name": "Staple Tee",
+        "description": "Enduring comfort in a mid-weight regular fit. Featuring neck ribbing, side seams, and double needle hems for durability and minimal shrinkage, it's a timeless choice for comfort and style. Built to last.",
+        "category": "tshirt",
+        "base_cost": 5.45,
+        "attributes": {
+            "material": "100% combed cotton",
+            "weight": "5.3 oz."
+        },
+        "best_for": ["casual wear", "retail"],
+        "decoration_compatibility": ["screen_print", "dtg"]
+    },
+    {
+        "id": "1801GD",
+        "name": "Garment Dyed Crewneck",
+        "description": "textile is durable, comfortable, and virtually shrink-free. Color will stay true even after repeated washings. It also gives a broken-in feel, just like your favorite T-shirt that's been worn for a decade. Meticulously designed with a high-ribbed collar that provides a snug, comfortable fit that will not stretch out or lose its shape over time. Cut with a spacious fit in the sleeves and torso, making it relaxed and versatile enough to wear with anything",
+        "category": "tshirt",
+        "base_cost": 6.75,
+        "attributes": {
+            "material": "100% USA cotton",
+            "weight": "6.5 oz."
+        },
+        "best_for": ["casual wear", "streetwear", "retail"],
+        "decoration_compatibility": ["screen_print", "dtg"]
+    }, 
+    {
+        "id": "ST350",
+        "name": "Sport-Tek PosiCharge Competitor Tee",
+        "description": "Lightweight, roomy and highly breathable, these moisture-wicking, value-priced tees feature PosiCharge technology to lock in color and prevent logos from fading.",
+        "category": "tshirt",
+        "base_cost": 4.13,
+        "attributes": {
+            "material": "100% Polyester",
+            "weight": "3.8 oz."
+        },
+        "best_for": ["teams", "sports", "school"],
+        "decoration_compatibility": ["screen_print"]
+    },
+    {
+        "id": "18500",
+        "name": "Gildan Heavy Blend Hooded Sweatshirt",
+        "description": "The Heavy Blend collection is now made with finer yarns and new MVS Air spinning technology, which improves the fabric by reducing pilling, enhancing durability and creating a smoother printing surface.",
+        "category": "hoodie",
+        "base_cost": 9.75,
+        "attributes": {
+            "material": "50/50 cotton/polyester blend",
+            "weight": "8 oz."
+        },
+        "decoration_compatibility": ["screen_print"]
+    },
+    {
+        "id": "SF500",
+        "name": "Gildan Softstyle Midweight Pullover Hooded Sweatshirt",
+        "description": "Hoodie designed for a soft, premium feel at a budget-friendly price",
+        "category": "hoodie",
+        "base_cost": 11.66,
+        "attributes": {
+            "material": "80/20 ring spun cotton/poly",
+            "weight": "8.4 oz."
+        },
+        "decoration_compatibility": ["screen_print"]
+    },
+    {
+        "id": "DT650",
+        "name": "District V.I.T. Heavyweight Fleece Hoodie",
+        "description": "These old-school options are oversized, durable and versatile",
+        "category": "hoodie",
+        "base_cost": 14.99,
+        "attributes": {
+            "material": "100% ringspun cotton",
+            "weight": "10 oz."
+        },
+        "decoration_compatibility": ["screen_print", "dtg"]
+    },
+    {
+        "id": "HFO9GD",
+        "name": "Heavy Fleece Hood",
+        "description": "This hoodie is incredibly soft and warm, yet still breathable and moisture-wicking. The loose fit allows for a full range of motion, making it perfect for everything from running errands to lounging around the house. The kangaroo pocket provides ample storage for your essentials, while the ribbed cuffs and hem keep the cold out.",
+        "category": "hoodie",
+        "base_cost": 36.05,
+        "attributes": {
+            "material": "100% heavyweight cotton",
+            "weight": "14 oz."
+        },
+        "decoration_compatibility": ["screen_print", "dtg"]
+    },
+    {
+        "id": "SS4500",
+        "name": "Unisex Midweight Hooded Sweatshirt",
+        "description": "Midweight midtier hoodie",
+        "category": "hoodie",
+        "base_cost": 13.13,
+        "attributes": {
+            "material": "80/20 ring-spun cotton/polyester blend fleece",
+            "weight": "8.5 oz."
+        },
+        "decoration_compatibility": ["screen_print"]
+    },
+    {
+        "id": "CP77",
+        "name": "Port Authority Brushed Twill Low Profile Cap",
+        "description": "The great classic look and lightweight feel make this cap an all-around favorite.",
+        "category": "hat",
+        "base_cost": 3.68,
+        "attributes": {
+            "material": "100% brushed cotton twill",
+            "type": "low profile, unstructured dad hat"
+        },
+        "decoration_compatibility": ["embroidery"]
+    },
+    {
+        "id": "112",
+        "name": "Richardson Trucker Cap",
+        "description": "The standard by which all trucker caps are measured. Popular for its undeniable quality and versatility, this casual classic is constructed with the trademark attention to detail Richardson is known for.",
+        "category": "hat",
+        "base_cost": 6.75,
+        "attributes": {
+            "material": "60/40 cotton/polyester front with 100% polyester mesh back",
+            "type": "mid profile, structured trucker hat"
+        },
+        "decoration_compatibility": ["embroidery"]
+    },
+    {
+        "id": "632",
+        "name": "Richardson Laser Perf R-Flex Snapback",
+        "description": "A performance version of a classic six-panel baseball cap, this cap has a laser-perforated body for maximum airflow and a Stay-Dri sweatband to keep players dry.",
+        "category": "hat",
+        "base_cost": 10.50,
+        "attributes": {
+            "material": "98/2 polyester/spandex Ignite LT performance fabric",
+            "type": "mid profile structured athletic hat"
+        },
+        "decoration_compatibility": ["embroidery"]
+    },
+    {
+        "id": "31-069",
+        "name": "OTTO CAP 5 Panel Mid Profile Baseball Cap",
+        "description": "Durable, structured cap designed for versatility, featuring a seamless, firm front panel ideal for custom embroidery",
+        "category": "hat",
+        "base_cost": 5.05,
+        "attributes": {
+            "material": "65% Polyester/35% Cotton. Structured Firm Front Panel",
+            "type": "mid profile structured baseball cap"
+        },
+        "decoration_compatibility": ["embroidery"]
+    }
+]

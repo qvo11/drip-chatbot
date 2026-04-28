@@ -1,0 +1,432 @@
+{
+  "print_type": "embroidery",
+  "label": "Embroidery",
+  "description": "Premium stitched look. Best for hats, polos, and corporate apparel. Price is per design per location.",
+  "garment_markup": [
+    { "qty_min": 1,   "qty_max": 2,    "markup_pct": 1.00 },
+    { "qty_min": 3,   "qty_max": 5,    "markup_pct": 0.90 },
+    { "qty_min": 6,   "qty_max": 11,   "markup_pct": 0.85 },
+    { "qty_min": 12,  "qty_max": 23,   "markup_pct": 0.80 },
+    { "qty_min": 24,  "qty_max": 47,   "markup_pct": 0.75 },
+    { "qty_min": 48,  "qty_max": 95,   "markup_pct": 0.70 },
+    { "qty_min": 96,  "qty_max": 143,  "markup_pct": 0.60 },
+    { "qty_min": 144, "qty_max": 287,  "markup_pct": 0.50 },
+    { "qty_min": 288, "qty_max": 99999,"markup_pct": 0.50 }
+  ],
+  "first_location": {
+    "label": "First Embroidery Location",
+    "note": "Price is per piece based on stitch count and quantity.",
+    "stitch_tiers": [
+      {
+        "stitch_min": 0, "stitch_max": 3999,
+        "qty_tiers": [
+          { "qty_min": 1,   "qty_max": 3,    "cost": 14.93 },
+          { "qty_min": 4,   "qty_max": 11,   "cost": 11.12 },
+          { "qty_min": 12,  "qty_max": 23,   "cost": 7.09 },
+          { "qty_min": 24,  "qty_max": 71,   "cost": 5.67 },
+          { "qty_min": 72,  "qty_max": 143,  "cost": 5.10 },
+          { "qty_min": 144, "qty_max": 287,  "cost": 4.46 },
+          { "qty_min": 288, "qty_max": 499,  "cost": 4.37 },
+          { "qty_min": 500, "qty_max": 999,  "cost": 4.28 },
+          { "qty_min": 1000,"qty_max": 99999,"cost": 4.19 }
+        ]
+      },
+      {
+        "stitch_min": 4000, "stitch_max": 6499,
+        "qty_tiers": [
+          { "qty_min": 1,   "qty_max": 3,    "cost": 17.25 },
+          { "qty_min": 4,   "qty_max": 11,   "cost": 13.09 },
+          { "qty_min": 12,  "qty_max": 23,   "cost": 8.13 },
+          { "qty_min": 24,  "qty_max": 71,   "cost": 6.40 },
+          { "qty_min": 72,  "qty_max": 143,  "cost": 5.67 },
+          { "qty_min": 144, "qty_max": 287,  "cost": 4.86 },
+          { "qty_min": 288, "qty_max": 499,  "cost": 4.76 },
+          { "qty_min": 500, "qty_max": 999,  "cost": 4.67 },
+          { "qty_min": 1000,"qty_max": 99999,"cost": 4.57 }
+        ]
+      },
+      {
+        "stitch_min": 6500, "stitch_max": 8999,
+        "qty_tiers": [
+          { "qty_min": 1,   "qty_max": 3,    "cost": 20.16 },
+          { "qty_min": 4,   "qty_max": 11,   "cost": 14.82 },
+          { "qty_min": 12,  "qty_max": 23,   "cost": 9.17 },
+          { "qty_min": 24,  "qty_max": 71,   "cost": 7.21 },
+          { "qty_min": 72,  "qty_max": 143,  "cost": 6.24 },
+          { "qty_min": 144, "qty_max": 287,  "cost": 5.27 },
+          { "qty_min": 288, "qty_max": 499,  "cost": 5.16 },
+          { "qty_min": 500, "qty_max": 999,  "cost": 5.06 },
+          { "qty_min": 1000,"qty_max": 99999,"cost": 4.96 }
+        ]
+      },
+      {
+        "stitch_min": 9000, "stitch_max": 12499,
+        "qty_tiers": [
+          { "qty_min": 1,   "qty_max": 3,    "cost": 22.68 },
+          { "qty_min": 4,   "qty_max": 11,   "cost": 16.68 },
+          { "qty_min": 12,  "qty_max": 23,   "cost": 10.40 },
+          { "qty_min": 24,  "qty_max": 71,   "cost": 7.94 },
+          { "qty_min": 72,  "qty_max": 143,  "cost": 6.97 },
+          { "qty_min": 144, "qty_max": 287,  "cost": 5.83 },
+          { "qty_min": 288, "qty_max": 499,  "cost": 5.72 },
+          { "qty_min": 500, "qty_max": 999,  "cost": 5.60 },
+          { "qty_min": 1000,"qty_max": 99999,"cost": 5.49 }
+        ]
+      },
+      {
+        "stitch_min": 12500, "stitch_max": 15999,
+        "qty_tiers": [
+          { "qty_min": 1,   "qty_max": 3,    "cost": 25.20 },
+          { "qty_min": 4,   "qty_max": 11,   "cost": 18.53 },
+          { "qty_min": 12,  "qty_max": 23,   "cost": 11.62 },
+          { "qty_min": 24,  "qty_max": 71,   "cost": 8.75 },
+          { "qty_min": 72,  "qty_max": 143,  "cost": 7.70 },
+          { "qty_min": 144, "qty_max": 287,  "cost": 6.40 },
+          { "qty_min": 288, "qty_max": 499,  "cost": 6.27 },
+          { "qty_min": 500, "qty_max": 999,  "cost": 6.15 },
+          { "qty_min": 1000,"qty_max": 99999,"cost": 6.02 }
+        ]
+      },
+      {
+        "stitch_min": 16000, "stitch_max": 19499,
+        "qty_tiers": [
+          { "qty_min": 1,   "qty_max": 3,    "cost": 27.72 },
+          { "qty_min": 4,   "qty_max": 11,   "cost": 20.39 },
+          { "qty_min": 12,  "qty_max": 23,   "cost": 12.85 },
+          { "qty_min": 24,  "qty_max": 71,   "cost": 9.56 },
+          { "qty_min": 72,  "qty_max": 143,  "cost": 8.42 },
+          { "qty_min": 144, "qty_max": 287,  "cost": 6.97 },
+          { "qty_min": 288, "qty_max": 499,  "cost": 6.83 },
+          { "qty_min": 500, "qty_max": 999,  "cost": 6.69 },
+          { "qty_min": 1000,"qty_max": 99999,"cost": 6.56 }
+        ]
+      },
+      {
+        "stitch_min": 19500, "stitch_max": 22999,
+        "qty_tiers": [
+          { "qty_min": 1,   "qty_max": 3,    "cost": 30.24 },
+          { "qty_min": 4,   "qty_max": 11,   "cost": 22.23 },
+          { "qty_min": 12,  "qty_max": 23,   "cost": 14.65 },
+          { "qty_min": 24,  "qty_max": 71,   "cost": 10.45 },
+          { "qty_min": 72,  "qty_max": 143,  "cost": 9.15 },
+          { "qty_min": 144, "qty_max": 287,  "cost": 7.53 },
+          { "qty_min": 288, "qty_max": 499,  "cost": 7.38 },
+          { "qty_min": 500, "qty_max": 999,  "cost": 7.23 },
+          { "qty_min": 1000,"qty_max": 99999,"cost": 7.09 }
+        ]
+      },
+      {
+        "stitch_min": 23000, "stitch_max": 26499,
+        "qty_tiers": [
+          { "qty_min": 1,   "qty_max": 3,    "cost": 33.18 },
+          { "qty_min": 4,   "qty_max": 11,   "cost": 24.09 },
+          { "qty_min": 12,  "qty_max": 23,   "cost": 15.40 },
+          { "qty_min": 24,  "qty_max": 71,   "cost": 11.34 },
+          { "qty_min": 72,  "qty_max": 143,  "cost": 9.96 },
+          { "qty_min": 144, "qty_max": 287,  "cost": 8.18 },
+          { "qty_min": 288, "qty_max": 499,  "cost": 8.02 },
+          { "qty_min": 500, "qty_max": 999,  "cost": 7.86 },
+          { "qty_min": 1000,"qty_max": 99999,"cost": 7.70 }
+        ]
+      },
+      {
+        "stitch_min": 26500, "stitch_max": 29999,
+        "qty_tiers": [
+          { "qty_min": 1,   "qty_max": 3,    "cost": 36.96 },
+          { "qty_min": 4,   "qty_max": 11,   "cost": 25.94 },
+          { "qty_min": 12,  "qty_max": 23,   "cost": 16.92 },
+          { "qty_min": 24,  "qty_max": 71,   "cost": 12.47 },
+          { "qty_min": 72,  "qty_max": 143,  "cost": 10.94 },
+          { "qty_min": 144, "qty_max": 287,  "cost": 9.07 },
+          { "qty_min": 288, "qty_max": 499,  "cost": 8.89 },
+          { "qty_min": 500, "qty_max": 999,  "cost": 8.71 },
+          { "qty_min": 1000,"qty_max": 99999,"cost": 8.54 }
+        ]
+      },
+      {
+        "stitch_min": 30000, "stitch_max": 32999,
+        "qty_tiers": [
+          { "qty_min": 1,   "qty_max": 3,    "cost": 39.48 },
+          { "qty_min": 4,   "qty_max": 11,   "cost": 29.64 },
+          { "qty_min": 12,  "qty_max": 23,   "cost": 19.28 },
+          { "qty_min": 24,  "qty_max": 71,   "cost": 14.50 },
+          { "qty_min": 72,  "qty_max": 143,  "cost": 12.56 },
+          { "qty_min": 144, "qty_max": 287,  "cost": 10.69 },
+          { "qty_min": 288, "qty_max": 499,  "cost": 10.48 },
+          { "qty_min": 500, "qty_max": 999,  "cost": 10.27 },
+          { "qty_min": 1000,"qty_max": 99999,"cost": 10.06 }
+        ]
+      },
+      {
+        "stitch_min": 33000, "stitch_max": 35000,
+        "qty_tiers": [
+          { "qty_min": 1,   "qty_max": 3,    "cost": 42.00 },
+          { "qty_min": 4,   "qty_max": 11,   "cost": 33.35 },
+          { "qty_min": 12,  "qty_max": 23,   "cost": 21.64 },
+          { "qty_min": 24,  "qty_max": 71,   "cost": 16.52 },
+          { "qty_min": 72,  "qty_max": 143,  "cost": 14.18 },
+          { "qty_min": 144, "qty_max": 287,  "cost": 12.31 },
+          { "qty_min": 288, "qty_max": 499,  "cost": 12.07 },
+          { "qty_min": 500, "qty_max": 999,  "cost": 11.82 },
+          { "qty_min": 1000,"qty_max": 99999,"cost": 11.59 }
+        ]
+      }
+    ]
+  },
+  "second_location": {
+    "label": "Second Embroidery Location (20% OFF first location price)",
+    "note": "Apply 20% discount to the first location price for same stitch count and quantity bracket.",
+    "stitch_tiers": [
+      {
+        "stitch_min": 0, "stitch_max": 3999,
+        "qty_tiers": [
+          { "qty_min": 1,   "qty_max": 3,    "cost": 11.94 },
+          { "qty_min": 4,   "qty_max": 11,   "cost": 8.89 },
+          { "qty_min": 12,  "qty_max": 23,   "cost": 5.67 },
+          { "qty_min": 24,  "qty_max": 71,   "cost": 4.54 },
+          { "qty_min": 72,  "qty_max": 143,  "cost": 4.08 },
+          { "qty_min": 144, "qty_max": 287,  "cost": 3.56 },
+          { "qty_min": 288, "qty_max": 499,  "cost": 3.49 },
+          { "qty_min": 500, "qty_max": 999,  "cost": 3.42 },
+          { "qty_min": 1000,"qty_max": 99999,"cost": 3.35 }
+        ]
+      },
+      {
+        "stitch_min": 4000, "stitch_max": 6999,
+        "qty_tiers": [
+          { "qty_min": 1,   "qty_max": 3,    "cost": 13.80 },
+          { "qty_min": 4,   "qty_max": 11,   "cost": 10.47 },
+          { "qty_min": 12,  "qty_max": 23,   "cost": 6.50 },
+          { "qty_min": 24,  "qty_max": 71,   "cost": 5.12 },
+          { "qty_min": 72,  "qty_max": 143,  "cost": 4.54 },
+          { "qty_min": 144, "qty_max": 287,  "cost": 3.89 },
+          { "qty_min": 288, "qty_max": 499,  "cost": 3.81 },
+          { "qty_min": 500, "qty_max": 999,  "cost": 3.73 },
+          { "qty_min": 1000,"qty_max": 99999,"cost": 3.66 }
+        ]
+      },
+      {
+        "stitch_min": 7000, "stitch_max": 9499,
+        "qty_tiers": [
+          { "qty_min": 1,   "qty_max": 3,    "cost": 16.13 },
+          { "qty_min": 4,   "qty_max": 11,   "cost": 11.86 },
+          { "qty_min": 12,  "qty_max": 23,   "cost": 7.33 },
+          { "qty_min": 24,  "qty_max": 71,   "cost": 5.77 },
+          { "qty_min": 72,  "qty_max": 143,  "cost": 4.99 },
+          { "qty_min": 144, "qty_max": 287,  "cost": 4.21 },
+          { "qty_min": 288, "qty_max": 499,  "cost": 4.13 },
+          { "qty_min": 500, "qty_max": 999,  "cost": 4.05 },
+          { "qty_min": 1000,"qty_max": 99999,"cost": 3.96 }
+        ]
+      },
+      {
+        "stitch_min": 9500, "stitch_max": 12999,
+        "qty_tiers": [
+          { "qty_min": 1,   "qty_max": 3,    "cost": 18.14 },
+          { "qty_min": 4,   "qty_max": 11,   "cost": 13.35 },
+          { "qty_min": 12,  "qty_max": 23,   "cost": 8.32 },
+          { "qty_min": 24,  "qty_max": 71,   "cost": 6.35 },
+          { "qty_min": 72,  "qty_max": 143,  "cost": 5.57 },
+          { "qty_min": 144, "qty_max": 287,  "cost": 4.67 },
+          { "qty_min": 288, "qty_max": 499,  "cost": 4.57 },
+          { "qty_min": 500, "qty_max": 999,  "cost": 4.48 },
+          { "qty_min": 1000,"qty_max": 99999,"cost": 4.39 }
+        ]
+      },
+      {
+        "stitch_min": 13000, "stitch_max": 15999,
+        "qty_tiers": [
+          { "qty_min": 1,   "qty_max": 3,    "cost": 20.16 },
+          { "qty_min": 4,   "qty_max": 11,   "cost": 14.82 },
+          { "qty_min": 12,  "qty_max": 23,   "cost": 9.30 },
+          { "qty_min": 24,  "qty_max": 71,   "cost": 7.00 },
+          { "qty_min": 72,  "qty_max": 143,  "cost": 6.16 },
+          { "qty_min": 144, "qty_max": 287,  "cost": 5.12 },
+          { "qty_min": 288, "qty_max": 499,  "cost": 5.02 },
+          { "qty_min": 500, "qty_max": 999,  "cost": 4.92 },
+          { "qty_min": 1000,"qty_max": 99999,"cost": 4.82 }
+        ]
+      },
+      {
+        "stitch_min": 16000, "stitch_max": 18999,
+        "qty_tiers": [
+          { "qty_min": 1,   "qty_max": 3,    "cost": 22.18 },
+          { "qty_min": 4,   "qty_max": 11,   "cost": 16.31 },
+          { "qty_min": 12,  "qty_max": 23,   "cost": 10.28 },
+          { "qty_min": 24,  "qty_max": 71,   "cost": 7.65 },
+          { "qty_min": 72,  "qty_max": 143,  "cost": 6.74 },
+          { "qty_min": 144, "qty_max": 287,  "cost": 5.57 },
+          { "qty_min": 288, "qty_max": 499,  "cost": 5.46 },
+          { "qty_min": 500, "qty_max": 999,  "cost": 5.35 },
+          { "qty_min": 1000,"qty_max": 99999,"cost": 5.25 }
+        ]
+      },
+      {
+        "stitch_min": 19999, "stitch_max": 22999,
+        "qty_tiers": [
+          { "qty_min": 1,   "qty_max": 3,    "cost": 24.19 },
+          { "qty_min": 4,   "qty_max": 11,   "cost": 17.78 },
+          { "qty_min": 12,  "qty_max": 23,   "cost": 11.72 },
+          { "qty_min": 24,  "qty_max": 71,   "cost": 8.36 },
+          { "qty_min": 72,  "qty_max": 143,  "cost": 7.32 },
+          { "qty_min": 144, "qty_max": 287,  "cost": 6.03 },
+          { "qty_min": 288, "qty_max": 499,  "cost": 5.91 },
+          { "qty_min": 500, "qty_max": 999,  "cost": 5.79 },
+          { "qty_min": 1000,"qty_max": 99999,"cost": 5.67 }
+        ]
+      },
+      {
+        "stitch_min": 23000, "stitch_max": 25999,
+        "qty_tiers": [
+          { "qty_min": 1,   "qty_max": 3,    "cost": 26.54 },
+          { "qty_min": 4,   "qty_max": 11,   "cost": 19.27 },
+          { "qty_min": 12,  "qty_max": 23,   "cost": 12.32 },
+          { "qty_min": 24,  "qty_max": 71,   "cost": 9.07 },
+          { "qty_min": 72,  "qty_max": 143,  "cost": 7.97 },
+          { "qty_min": 144, "qty_max": 287,  "cost": 6.54 },
+          { "qty_min": 288, "qty_max": 499,  "cost": 6.41 },
+          { "qty_min": 500, "qty_max": 999,  "cost": 6.29 },
+          { "qty_min": 1000,"qty_max": 99999,"cost": 6.16 }
+        ]
+      },
+      {
+        "stitch_min": 26000, "stitch_max": 28999,
+        "qty_tiers": [
+          { "qty_min": 1,   "qty_max": 3,    "cost": 29.57 },
+          { "qty_min": 4,   "qty_max": 11,   "cost": 20.75 },
+          { "qty_min": 12,  "qty_max": 23,   "cost": 13.53 },
+          { "qty_min": 24,  "qty_max": 71,   "cost": 9.98 },
+          { "qty_min": 72,  "qty_max": 143,  "cost": 8.75 },
+          { "qty_min": 144, "qty_max": 287,  "cost": 7.26 },
+          { "qty_min": 288, "qty_max": 499,  "cost": 7.11 },
+          { "qty_min": 500, "qty_max": 999,  "cost": 6.97 },
+          { "qty_min": 1000,"qty_max": 99999,"cost": 6.83 }
+        ]
+      },
+      {
+        "stitch_min": 29000, "stitch_max": 32999,
+        "qty_tiers": [
+          { "qty_min": 1,   "qty_max": 3,    "cost": 31.58 },
+          { "qty_min": 4,   "qty_max": 11,   "cost": 23.71 },
+          { "qty_min": 12,  "qty_max": 23,   "cost": 15.42 },
+          { "qty_min": 24,  "qty_max": 71,   "cost": 11.60 },
+          { "qty_min": 72,  "qty_max": 143,  "cost": 10.04 },
+          { "qty_min": 144, "qty_max": 287,  "cost": 8.55 },
+          { "qty_min": 288, "qty_max": 499,  "cost": 8.38 },
+          { "qty_min": 500, "qty_max": 999,  "cost": 8.21 },
+          { "qty_min": 1000,"qty_max": 99999,"cost": 8.05 }
+        ]
+      },
+      {
+        "stitch_min": 33000, "stitch_max": 35000,
+        "qty_tiers": [
+          { "qty_min": 1,   "qty_max": 3,    "cost": 33.60 },
+          { "qty_min": 4,   "qty_max": 11,   "cost": 26.68 },
+          { "qty_min": 12,  "qty_max": 23,   "cost": 17.31 },
+          { "qty_min": 24,  "qty_max": 71,   "cost": 13.22 },
+          { "qty_min": 72,  "qty_max": 143,  "cost": 11.34 },
+          { "qty_min": 144, "qty_max": 287,  "cost": 9.85 },
+          { "qty_min": 288, "qty_max": 499,  "cost": 9.65 },
+          { "qty_min": 500, "qty_max": 999,  "cost": 9.46 },
+          { "qty_min": 1000,"qty_max": 99999,"cost": 9.27 }
+        ]
+      }
+    ]
+  },
+  "add_ons": {
+    "additional_stitches_per_1000": [
+      { "qty_min": 1,   "qty_max": 11,   "cost_per_1000": 0.75 },
+      { "qty_min": 12,  "qty_max": 71,   "cost_per_1000": 0.65 },
+      { "qty_min": 72,  "qty_max": 287,  "cost_per_1000": 0.55 },
+      { "qty_min": 288, "qty_max": 999,  "cost_per_1000": 0.45 },
+      { "qty_min": 1000,"qty_max": 99999,"cost_per_1000": 0.40 }
+    ],
+    "puff_3d_embroidery": [
+      { "qty_min": 1,   "qty_max": 3,    "cost": 4.00 },
+      { "qty_min": 4,   "qty_max": 11,   "cost": 3.50 },
+      { "qty_min": 12,  "qty_max": 23,   "cost": 3.40 },
+      { "qty_min": 24,  "qty_max": 71,   "cost": 3.30 },
+      { "qty_min": 72,  "qty_max": 143,  "cost": 3.20 },
+      { "qty_min": 144, "qty_max": 287,  "cost": 3.10 },
+      { "qty_min": 288, "qty_max": 499,  "cost": 3.00 },
+      { "qty_min": 500, "qty_max": 999,  "cost": 2.90 },
+      { "qty_min": 1000,"qty_max": 99999,"cost": 2.80 }
+    ],
+    "personalization_1_line": [
+      { "qty_min": 1,   "qty_max": 3,    "cost": 14.00 },
+      { "qty_min": 4,   "qty_max": 11,   "cost": 9.00 },
+      { "qty_min": 12,  "qty_max": 23,   "cost": 8.08 },
+      { "qty_min": 24,  "qty_max": 71,   "cost": 7.26 },
+      { "qty_min": 72,  "qty_max": 143,  "cost": 6.00 },
+      { "qty_min": 144, "qty_max": 287,  "cost": 5.70 },
+      { "qty_min": 288, "qty_max": 499,  "cost": 5.50 },
+      { "qty_min": 500, "qty_max": 999,  "cost": 5.30 },
+      { "qty_min": 1000,"qty_max": 99999,"cost": 5.15 }
+    ],
+    "personalization_2_lines": [
+      { "qty_min": 1,   "qty_max": 3,    "cost": 18.00 },
+      { "qty_min": 4,   "qty_max": 11,   "cost": 12.00 },
+      { "qty_min": 12,  "qty_max": 23,   "cost": 10.45 },
+      { "qty_min": 24,  "qty_max": 71,   "cost": 9.19 },
+      { "qty_min": 72,  "qty_max": 143,  "cost": 7.50 },
+      { "qty_min": 144, "qty_max": 287,  "cost": 7.20 },
+      { "qty_min": 288, "qty_max": 499,  "cost": 7.00 },
+      { "qty_min": 500, "qty_max": 999,  "cost": 6.80 },
+      { "qty_min": 1000,"qty_max": 99999,"cost": 6.65 }
+    ],
+    "oversize_personalization": [
+      { "qty_min": 1,   "qty_max": 3,    "cost": 20.00 },
+      { "qty_min": 4,   "qty_max": 11,   "cost": 15.00 },
+      { "qty_min": 12,  "qty_max": 23,   "cost": 13.00 },
+      { "qty_min": 24,  "qty_max": 71,   "cost": 10.50 },
+      { "qty_min": 72,  "qty_max": 143,  "cost": 8.50 },
+      { "qty_min": 144, "qty_max": 287,  "cost": 8.20 },
+      { "qty_min": 288, "qty_max": 499,  "cost": 8.00 },
+      { "qty_min": 500, "qty_max": 999,  "cost": 7.80 },
+      { "qty_min": 1000,"qty_max": 99999,"cost": 7.65 }
+    ],
+    "specialty_item_placement": [
+      { "qty_min": 1,   "qty_max": 3,    "cost": 4.50 },
+      { "qty_min": 4,   "qty_max": 11,   "cost": 3.00 },
+      { "qty_min": 12,  "qty_max": 23,   "cost": 2.50 },
+      { "qty_min": 24,  "qty_max": 71,   "cost": 2.25 },
+      { "qty_min": 72,  "qty_max": 143,  "cost": 2.00 },
+      { "qty_min": 144, "qty_max": 99999,"cost": 1.75 }
+    ],
+    "oversize_setup": {
+      "note": "Over 5.25\" Circle up to 10\"W x 5\"H",
+      "tiers": [
+        { "qty_min": 1,   "qty_max": 3,    "cost": 6.00 },
+        { "qty_min": 4,   "qty_max": 11,   "cost": 4.50 },
+        { "qty_min": 12,  "qty_max": 23,   "cost": 3.50 },
+        { "qty_min": 24,  "qty_max": 71,   "cost": 3.00 },
+        { "qty_min": 72,  "qty_max": 143,  "cost": 2.75 },
+        { "qty_min": 144, "qty_max": 99999,"cost": 2.50 }
+      ]
+    }
+  },
+  "digitizing_fees": {
+    "regular_logo_up_to_6k_stitches": 45.00,
+    "per_1000_stitches_over_6k": 3.00,
+    "redigitizing_fee": 15.00,
+    "custom_thread_ordering": {
+      "cost": 90.00,
+      "note": "Accounts for 6 spools of thread to run 6 at a time"
+    }
+  },
+  "client_supplied_garments": {
+    "markup_pct": 0.20,
+    "markup_from": "run charge"
+  },
+  "constraints": {
+    "max_embroidery_size": "11\" W x 11\" H",
+    "max_stitch_count": 35000
+  },
+  "notes": [
+    "All pricing is per piece per embroidery location.",
+    "Second location receives 20% discount off first location rate.",
+    "Stitch count must be estimated before quoting — digitizing required.",
+    "Client-supplied garments are marked up 20% from the run charge.",
+    "Personalization pricing is in addition to base embroidery cost."
+  ]
+}

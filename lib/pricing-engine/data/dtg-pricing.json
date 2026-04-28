@@ -1,0 +1,163 @@
+{
+  "print_type": "dtg",
+  "label": "Direct to Garment (DTG)",
+  "description": "Full color printing directly onto cotton fabric only. Best for complex artwork, photos, or low quantity runs.",
+  "production_timeline": {
+    "standard": "5-7 business days from approval",
+    "rush_options": [
+      { "label": "5",    "markup_pct": 0.15 },
+      { "label": "4",    "markup_pct": 0.20 },
+      { "label": "3",    "markup_pct": 0.35 },
+      { "label": "2",    "markup_pct": 0.50 },
+      { "label": "1",  "markup_pct": 0.60 },
+      { "label": "Same Day Rush", "markup_pct": "contact" }
+    ],
+    "rush_cutoff": "12:00 PM — orders after cutoff charged at next day's rate"
+  },
+  "garment_markup": [
+    { "qty_min": 1,   "qty_max": 2,   "markup_pct": 1.00 },
+    { "qty_min": 3,   "qty_max": 5,   "markup_pct": 0.90 },
+    { "qty_min": 6,   "qty_max": 11,  "markup_pct": 0.85 },
+    { "qty_min": 12,  "qty_max": 23,  "markup_pct": 0.80 },
+    { "qty_min": 24,  "qty_max": 47,  "markup_pct": 0.75 },
+    { "qty_min": 48,  "qty_max": 95,  "markup_pct": 0.70 },
+    { "qty_min": 96,  "qty_max": 143, "markup_pct": 0.65 },
+    { "qty_min": 144, "qty_max": 287, "markup_pct": 0.60 },
+    { "qty_min": 288, "qty_max": 99999, "markup_pct": 0.55 }
+  ],
+  "light_garments": {
+    "label": "DTG — Light Garments",
+    "note": "Use for white and light colored garments",
+    "print_sizes": [
+      {
+        "size": "5x5",
+        "tiers": [
+          { "qty_min": 1,   "qty_max": 2,   "cost": 10.50 },
+          { "qty_min": 3,   "qty_max": 5,   "cost": 7.85 },
+          { "qty_min": 6,   "qty_max": 11,  "cost": 5.90 },
+          { "qty_min": 12,  "qty_max": 23,  "cost": 5.55 },
+          { "qty_min": 24,  "qty_max": 47,  "cost": 5.10 },
+          { "qty_min": 48,  "qty_max": 95,  "cost": 4.45 },
+          { "qty_min": 96,  "qty_max": 143, "cost": 3.95 },
+          { "qty_min": 144, "qty_max": 287, "cost": 3.60 },
+          { "qty_min": 288, "qty_max": 99999, "cost": 3.30 }
+        ]
+      },
+      {
+        "size": "10x10",
+        "tiers": [
+          { "qty_min": 1,   "qty_max": 2,   "cost": 12.75 },
+          { "qty_min": 3,   "qty_max": 5,   "cost": 9.55 },
+          { "qty_min": 6,   "qty_max": 11,  "cost": 7.15 },
+          { "qty_min": 12,  "qty_max": 23,  "cost": 6.75 },
+          { "qty_min": 24,  "qty_max": 47,  "cost": 6.20 },
+          { "qty_min": 48,  "qty_max": 95,  "cost": 5.35 },
+          { "qty_min": 96,  "qty_max": 143, "cost": 4.75 },
+          { "qty_min": 144, "qty_max": 287, "cost": 4.40 },
+          { "qty_min": 288, "qty_max": 99999, "cost": 4.00 }
+        ]
+      },
+      {
+        "size": "12x14",
+        "tiers": [
+          { "qty_min": 1,   "qty_max": 2,   "cost": 14.95 },
+          { "qty_min": 3,   "qty_max": 5,   "cost": 11.25 },
+          { "qty_min": 6,   "qty_max": 11,  "cost": 8.45 },
+          { "qty_min": 12,  "qty_max": 23,  "cost": 7.95 },
+          { "qty_min": 24,  "qty_max": 47,  "cost": 7.25 },
+          { "qty_min": 48,  "qty_max": 95,  "cost": 6.35 },
+          { "qty_min": 96,  "qty_max": 143, "cost": 5.65 },
+          { "qty_min": 144, "qty_max": 287, "cost": 5.15 },
+          { "qty_min": 288, "qty_max": 99999, "cost": 4.70 }
+        ]
+      },
+      {
+        "size": "16x21",
+        "tiers": [
+          { "qty_min": 1,   "qty_max": 2,   "cost": 17.20 },
+          { "qty_min": 3,   "qty_max": 5,   "cost": 12.90 },
+          { "qty_min": 6,   "qty_max": 11,  "cost": 9.70 },
+          { "qty_min": 12,  "qty_max": 23,  "cost": 9.15 },
+          { "qty_min": 24,  "qty_max": 47,  "cost": 8.35 },
+          { "qty_min": 48,  "qty_max": 95,  "cost": 7.25 },
+          { "qty_min": 96,  "qty_max": 143, "cost": 6.45 },
+          { "qty_min": 144, "qty_max": 287, "cost": 5.95 },
+          { "qty_min": 288, "qty_max": 99999, "cost": 5.40 }
+        ]
+      }
+    ]
+  },
+  "dark_garments": {
+    "label": "DTG — Dark Garments",
+    "note": "Use for dark or black garments. Requires underbase — higher cost.",
+    "print_sizes": [
+      {
+        "size": "5x5",
+        "tiers": [
+          { "qty_min": 1,   "qty_max": 2,   "cost": 13.10 },
+          { "qty_min": 3,   "qty_max": 5,   "cost": 11.15 },
+          { "qty_min": 6,   "qty_max": 11,  "cost": 9.15 },
+          { "qty_min": 12,  "qty_max": 23,  "cost": 7.20 },
+          { "qty_min": 24,  "qty_max": 47,  "cost": 6.40 },
+          { "qty_min": 48,  "qty_max": 95,  "cost": 5.75 },
+          { "qty_min": 96,  "qty_max": 143, "cost": 5.10 },
+          { "qty_min": 144, "qty_max": 287, "cost": 4.45 },
+          { "qty_min": 288, "qty_max": 99999, "cost": 4.10 }
+        ]
+      },
+      {
+        "size": "10x10",
+        "tiers": [
+          { "qty_min": 1,   "qty_max": 2,   "cost": 15.00 },
+          { "qty_min": 3,   "qty_max": 5,   "cost": 12.75 },
+          { "qty_min": 6,   "qty_max": 11,  "cost": 10.50 },
+          { "qty_min": 12,  "qty_max": 23,  "cost": 8.50 },
+          { "qty_min": 24,  "qty_max": 47,  "cost": 7.30 },
+          { "qty_min": 48,  "qty_max": 95,  "cost": 6.55 },
+          { "qty_min": 96,  "qty_max": 143, "cost": 5.80 },
+          { "qty_min": 144, "qty_max": 287, "cost": 5.05 },
+          { "qty_min": 288, "qty_max": 99999, "cost": 4.70 }
+        ]
+      },
+      {
+        "size": "12x14",
+        "tiers": [
+          { "qty_min": 1,   "qty_max": 2,   "cost": 18.70 },
+          { "qty_min": 3,   "qty_max": 5,   "cost": 15.90 },
+          { "qty_min": 6,   "qty_max": 11,  "cost": 13.10 },
+          { "qty_min": 12,  "qty_max": 23,  "cost": 10.30 },
+          { "qty_min": 24,  "qty_max": 47,  "cost": 9.15 },
+          { "qty_min": 48,  "qty_max": 95,  "cost": 8.20 },
+          { "qty_min": 96,  "qty_max": 143, "cost": 7.25 },
+          { "qty_min": 144, "qty_max": 287, "cost": 6.35 },
+          { "qty_min": 288, "qty_max": 99999, "cost": 5.85 }
+        ]
+      },
+      {
+        "size": "16x21",
+        "tiers": [
+          { "qty_min": 1,   "qty_max": 2,   "cost": 21.50 },
+          { "qty_min": 3,   "qty_max": 5,   "cost": 18.30 },
+          { "qty_min": 6,   "qty_max": 11,  "cost": 15.05 },
+          { "qty_min": 12,  "qty_max": 23,  "cost": 11.85 },
+          { "qty_min": 24,  "qty_max": 47,  "cost": 10.95 },
+          { "qty_min": 48,  "qty_max": 95,  "cost": 10.65 },
+          { "qty_min": 96,  "qty_max": 143, "cost": 9.80 },
+          { "qty_min": 144, "qty_max": 287, "cost": 8.85 },
+          { "qty_min": 288, "qty_max": 99999, "cost": 8.50 }
+        ]
+      }
+    ]
+  },
+  "requirements": {
+    "preferred_fabric": "100% Cotton (Ringspun preferred)",
+    "minimum_fabric": "50% Cotton minimum",
+    "max_print_dimensions": "16\" x 20\""
+  },
+  "notes": [
+    "DTG pricing shown is cost per piece per print location.",
+    "Dark garment pricing applies to any garment that is not white or light colored.",
+    "Same Day Rush pricing is per manager approval — contact directly.",
+    "Rush cutoff is 12PM; orders after cutoff are charged at next day's rate."
+  ]
+}
