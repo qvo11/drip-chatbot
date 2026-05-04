@@ -1,10 +1,10 @@
 "use client";
 
 import React from 'react';
-import DripAvatar from './DripAvatar';
 import { Button } from '../ui/button';
 import { useEffect, useRef } from 'react';
-import { playDripEntrance, startDripIdle } from '@/lib/animations';
+import DripSVG from './DripSVG';
+import { playDripEntrance, startDripIdle, stopDripIdle } from '@/lib/animations';
 
 interface DripIntroProps {
     onGetQuote: () => void;
@@ -15,21 +15,31 @@ export default function DripIntro({
     onGetQuote,
     onLearnMore,
 }: DripIntroProps) {
-    const avatarRef = React.useRef<HTMLImageElement>(null);
-    const bubbleRef = React.useRef<HTMLDivElement>(null);
-    const buttonsRef = React.useRef<HTMLDivElement>(null);
+    const fullRef = useRef<SVGGElement>(null);
+    const shadowRef = useRef<SVGGElement>(null);
+    const bucketRef = useRef<SVGGElement>(null);
+    const sunglassRef = useRef<SVGGElement>(null);
+    const squeegeeRef = useRef<SVGGElement>(null);
+    const bubbleRef = useRef<HTMLDivElement>(null);
+    const buttonsRef = useRef<HTMLDivElement>(null);
 
 useEffect(() => {
-    const tl = playDripEntrance(avatarRef, bubbleRef, buttonsRef, () => {
-        startDripIdle(avatarRef);
+    const tl = playDripEntrance( fullRef, shadowRef, bucketRef, sunglassRef, squeegeeRef, bubbleRef, buttonsRef, () => {
+        startDripIdle(fullRef, shadowRef, bucketRef);
+
+        return () => {
+            tl?.kill();
+            stopDripIdle(fullRef, shadowRef, bucketRef)
+        }
     });
 }, []);
 
     return (
         <div className="fixed inset-0 z-50 bg-brand-navy/95 flex items-center justify-center">
             <div className="flex items-center gap-0">
-
-                <DripAvatar ref={avatarRef} size="xl" className="opacity-0" />
+                <div className="w-50 h-50">
+                <DripSVG fullRef={fullRef} shadowRef={shadowRef} bucketRef={bucketRef} sunglassRef={sunglassRef} squeegeeRef={squeegeeRef}/>
+                </div>
 
                 {/* Speech bubble */}
                 <div ref={bubbleRef} className="opacity-0 flex items-center">
