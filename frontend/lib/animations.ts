@@ -163,7 +163,7 @@ export function startDripIdle(
     // Shadow breathes with the float
     gsap.to(shadow, {
         scaleX: 0.92,
-        scaleY: 0.85,
+        scaleY: 0.90,
         duration: 2.2,
         ease: "sine.inOut",
         yoyo: true,
