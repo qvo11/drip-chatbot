@@ -1,17 +1,15 @@
 from datetime import date, datetime, timedelta
+import holidays
+from functools import lru_cache
 
-HOLIDAYS_2026 = [
-    "2026-01-01",  # New Year's Day
-    "2026-05-25",  # Memorial Day
-    "2026-07-04",  # Independence Day
-    "2026-09-07",  # Labor Day
-    "2026-11-26",  # Thanksgiving
-    "2026-11-27",  # Day after Thanksgiving
-    "2026-12-25",  # Christmas
-]
+# Holidays include: New Year's Day, MLK Day, Presidents' Day, Memorial Day, Juneteenth, Independence Day, Labor Day, Columbus Day, Veterans Day, Thanksgiving and Christmas 
+
+@lru_cache(maxsize=None)
+def get_us_holidays(year: int):
+    return holidays.US(year=year)
 
 def is_holiday(check_date: date) -> bool:
-    return check_date.strftime("%Y-%m-%d") in HOLIDAYS_2026
+    return check_date in get_us_holidays(check_date.year)
 
 def is_weekend(check_date: date) -> bool:
     return check_date.weekday() >= 5

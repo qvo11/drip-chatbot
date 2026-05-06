@@ -1,4 +1,4 @@
-import productsData from "/Users/quinnvo/Desktop/drip-chatbot/backend/pricing-engine/data/products.json";
+import productsData from "../../backend/pricing-engine/data/products.json"
 
 export interface Product {
     id: string;
@@ -45,8 +45,12 @@ export const PRODUCT_RECOMMENDATIONS: Record<string, Record<string, string>> = {
     },
 };
 
-export function getRecommendedProduct(products: any[], category: string, filter: string) {
+export function getRecommendedProduct(category: string, filter: string) {
     const productId = PRODUCT_RECOMMENDATIONS[category]?.[filter];
     if (!productId) return null;
-    return products.find((p: any) => p.id === productId) ?? null;
+    return products.find((p: Product) => p.id === productId) ?? null;
+}
+
+export function getProductsByCategory(category: string): Product[] {
+    return products.filter((p: Product) => p.category === category);
 }

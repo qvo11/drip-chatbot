@@ -7,8 +7,6 @@ export function playDripEntrance(
     bucketRef: RefObject<SVGGElement>,
     sunglassRef: RefObject<SVGGElement>,
     squeegeeRef: RefObject<SVGGElement>,
-    bubbleRef: RefObject<HTMLDivElement>,
-    buttonsRef: RefObject<HTMLDivElement>,
     onComplete?: () => void
 ) {
     const full     = fullRef.current;
@@ -128,15 +126,6 @@ export function playDripEntrance(
         ease: "elastic.out(1.2, 0.5)",
     }, 1.16);
 
-    {/* UI elements */}
-    tl.fromTo(bubbleRef.current, 
-        { opacity: 0, x: -20 }, 
-        { opacity: 1, x: 0, duration: 0.4 })
-
-    tl.fromTo(buttonsRef.current,
-        { opacity: 0, y: 10 }, 
-        { opacity: 1, y: 0, duration: 0.3, stagger: 0.1 })
-
     return tl;
 }
 
@@ -191,4 +180,13 @@ export function stopDripIdle(
         shadowRef.current,
         bucketRef.current,
     ]);
+}
+
+export function fadeInButtons(buttonsRef: RefObject<HTMLDivElement | null>) {
+    if (!buttonsRef.current) return;
+    gsap.fromTo(
+        buttonsRef.current,
+        { opacity: 0, y: 8 },
+        { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }
+    );
 }

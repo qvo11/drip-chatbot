@@ -14,11 +14,6 @@ def find_tier(tiers: list, qty: int) -> Optional[dict]:
     for tier in tiers:
         if qty >= tier["qty_min"] and qty <= tier["qty_max"]:
             return tier
-
-def find_stitch_tier(tiers: list, stitch_count: int) -> Optional[dict]:
-    for tier in tiers:
-        if stitch_count >= tier["min_stitch"] and stitch_count <= tier["max_stitch"]:
-            return tier
         
 def r2(value: float) -> float:
     return round(value, 2)  

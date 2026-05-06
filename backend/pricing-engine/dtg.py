@@ -2,15 +2,8 @@ from utils import load_json, find_tier, r2, quote_error, get_rush_fee
 from typing import Optional
 
 dtg_data = load_json("dtg-pricing.json")
-products = load_json("products.json")
 
 VALID_PRINT_SIZES = ["5x5", "10x10", "12x14", "16x21"]
-
-def get_product(product_id: str) -> Optional[dict]:
-    for p in products:
-        if p["id"] == product_id:
-            return p
-    return None
 
 def get_garment_cost(qty: int, product_id: str) -> float:
     tier = find_tier(dtg_data["garment_markup"], qty)
@@ -38,19 +31,12 @@ def quote_dtg_print(
     quantity: int,
     locations: list,
     garment_tone: str,
-    product_id: str,
+    product: dict,
     rush_days: int = None
 ) -> dict:
 
     warnings = []
     line_items = []
-
-    # validate product & print method
-    product = get_product(product_id)
-    if not product:
-        return quote_error(f"Product ID {product_id} not found.")
-    if "dtg" not in product.get("decoration_compatibility", []):
-        return quote_error(f"{product['name']} does not support DTG printing.")
     
     # validate quantity
     if quantity < 1:

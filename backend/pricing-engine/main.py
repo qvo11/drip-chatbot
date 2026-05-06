@@ -22,7 +22,6 @@ app.add_middleware(
 products = load_json("products.json")
 
 # request models
-
 class ScreenPrintRequest(BaseModel):
     product_id: str
     quantity: int
@@ -41,9 +40,7 @@ class EmbroideryRequest(BaseModel):
     product_id: str
     quantity: int
     
-
 # helpers
-
 def resolve_product(product_id: str) -> Optional[dict]:
     for p in products:
         if p["id"] == product_id:
@@ -62,7 +59,6 @@ def resolve_rush(needed_by: str, standard_days: int = 7) -> Optional[tuple]:
         return None, f"Could not parse date '{needed_by}'. Use format YYYY-MM-DD."
 
 # endpoints
-
 @app.post("/api/quote/screen-print")
 def screen_print_quote(request: ScreenPrintRequest):
     product = resolve_product(request.product_id)

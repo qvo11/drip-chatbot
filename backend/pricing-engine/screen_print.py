@@ -2,13 +2,6 @@ from utils import load_json, find_tier, r2, quote_error, get_rush_fee
 from typing import Optional
 
 screen_data = load_json("screenprint-pricing.json")
-products = load_json("products.json")
-
-def get_product(product_id: str) -> Optional[dict]:
-    for p in products:
-        if p["id"] == product_id:
-            return p
-    return None
 
 def get_garment_cost(qty: int, product_id: str) -> float:
     tier = find_tier(screen_data["garment_markup"], qty)
@@ -38,20 +31,13 @@ def get_print_cost(tier: dict, num_colors: int) -> Optional[float]:
 def quote_screen_print(
     quantity: int,
     num_colors: int,
-    product_id: str,
+    product: dict,
     location_count: int = 1,
     rush_days: Optional[int] = None
 ) -> dict:
 
     warnings = []
     line_items = []
-
-    # validate product & print method
-    product = get_product(product_id)
-    if not product:
-        return quote_error(f"Product ID {product_id} not found.")
-    if "screen_print" not in product.get("decoration_compatibility", []):
-        return quote_error(f"{product['name']} does not support screen printing.")
     
     # validate quantity and colors
     if quantity < 20:
@@ -68,7 +54,7 @@ def quote_screen_print(
     if not tier:
         return quote_error(f"No pricing tier found for quantity {quantity}.")
 
-    # check if num_colors is actually available at quantity ignoring flash
+    # check if num_colors is actually available at quantity ignoring flash (for now)
     available_colors = tier.get("colors", {})
     if str(num_colors) not in available_colors:
         numeric_keys = [int(c) for c in available_colors.keys() if c.isdigit()]
