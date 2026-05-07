@@ -41,7 +41,7 @@ export default function DripWidget() {
 
     const { displayed, done } = useTypewriter(bubbleReady ? getStepMessage() : "", 45);
     
-    {/*Drip Entrance*/}
+    // Intro
     useEffect(() => {
         gsap.set(bubbleRef.current, { opacity: 0, x:-20});
         gsap.set(buttonsRef.current, { opacity: 0});
@@ -66,6 +66,7 @@ export default function DripWidget() {
         if (done) fadeInButtons(buttonsRef);
     }, [done, currentStep])
 
+    // Handler - Manage Flow
     const handleAnswer = (value: string) => {
         // INTRO
         if (currentStep === "intro") {
@@ -163,13 +164,16 @@ export default function DripWidget() {
             print_type: printType,
         }));
 
-        // hats skip garment tone, go straight to needed_by
+        // skip for hats/emb
         if (quoteData.category === "hat") setCurrentStep("needed_by");
-        else setCurrentStep("garment_tone");
+
+        // only dtg goes to garment tone step
+        if (quoteData.print_type === "dtg") setCurrentStep("garment_tone");
+        else setCurrentStep("needed_by");
         return;
     }
 
-    // GARMENT TONE — save tone, go to needed_by
+    // GARMENT TONE (dtg only)
     if (currentStep === "garment_tone") {
         setQuoteData(prev => ({ ...prev, garment_tone: value }));
         setCurrentStep("needed_by");
@@ -191,6 +195,45 @@ export default function DripWidget() {
         return;
     }
     };
+
+    // API Call
+    const fetchQuote = async (data: QuoteData) => {
+        setIsLoading(true);
+        try {
+             const endpoint = data.print_type === "dtg" ? "/api/quote/dtg" : 
+             data.print_type === "embroidery" ? "/api/quote/embroidery" : 
+             "/api/quote/screen-print";
+
+        const response = await fetch(`http://localhost:8000${endpoint}`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                product_id: data.product_id,
+                quantity: data.quantity,
+                location_count: data.selected_locations?.length ?? 1,
+                colors_per_location: data.colors_per_location,
+                garment_tone: data.garment_tone,
+                needed_by: data.needed_by,
+            })
+        });
+
+        const result = await response.json();
+
+        if (result.error) {
+            setCurrentStep("error"); 
+            return;
+        }
+
+        setResultMessage(`Here's your quote for ${result.product}!\n\nQuantity: ${result.quantity}\nCost per unit: $${result.cost_per_unit}\nTotal: $${result.total}`);
+        setCurrentStep("result");
+
+    } catch (err) {
+        setCurrentStep("error");
+    } finally {
+        setIsLoading(false);
+        }
+    }
+
 
     return (
          <div className="fixed inset-0 z-50 bg-brand-navy/95 flex items-center justify-center">
