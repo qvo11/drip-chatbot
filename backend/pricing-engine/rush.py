@@ -1,6 +1,7 @@
 from datetime import date, datetime, timedelta
 import holidays
 from functools import lru_cache
+from utils import rush_rates
 
 # Holidays include: New Year's Day, MLK Day, Presidents' Day, Memorial Day, Juneteenth, Independence Day, Labor Day, Columbus Day, Veterans Day, Thanksgiving and Christmas 
 
@@ -16,6 +17,15 @@ def is_weekend(check_date: date) -> bool:
 
 def is_business_day(check_date: date) -> bool:
     return not is_weekend(check_date) and not is_holiday(check_date)
+
+def add_business_day(start: date, days: int) -> date:
+    current= start
+    added = 0
+    while added < days:
+        current += timedelta(days=1)
+        if is_business_day(current):
+            added += 1
+    return current
 
 def count_business_days(start_date: date, end_date: date) -> int:
     business_days = 0
@@ -36,7 +46,7 @@ def calculate_rush(requested_date: date, order_time: datetime = None, standard_d
         effective_start += timedelta(days=1)
 
     business_days = count_business_days(effective_start, requested_date)
-    standard_delivery_date = effective_start + timedelta(days=standard_days)
+    standard_delivery_date = add_business_day(effective_start, standard_days)
 
     if requested_date >= standard_delivery_date:
         return {
@@ -59,7 +69,6 @@ def calculate_rush(requested_date: date, order_time: datetime = None, standard_d
 
     # 1-5 day rush
     if business_days <= 5:
-        rush_rates = {5: 0.20, 4: 0.30, 3: 0.40, 2: 0.50, 1: 0.75}
         return {
             "is_rush": True,
             "rush_days": business_days,
@@ -67,7 +76,7 @@ def calculate_rush(requested_date: date, order_time: datetime = None, standard_d
             "business_days_available": business_days,
             "message": f"{business_days}-day rush applies. Please contact us to confirm availability!"
         }
-
+    
     # 6+ days but before standard — no rush
     return {
         "is_rush": False,

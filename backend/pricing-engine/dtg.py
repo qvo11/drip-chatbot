@@ -5,9 +5,8 @@ dtg_data = load_json("dtg-pricing.json")
 
 VALID_PRINT_SIZES = ["5x5", "10x10", "12x14", "16x21"]
 
-def get_garment_cost(qty: int, product_id: str) -> float:
+def get_garment_cost(qty: int, product: dict) -> float:
     tier = find_tier(dtg_data["garment_markup"], qty)
-    product = get_product(product_id)
     if not product or not tier:
         return 0.0
     return r2(product["base_cost"] * (1 + tier["markup_pct"]))
@@ -67,7 +66,7 @@ def quote_dtg_print(
     warnings.append("DTG printing works best on 100% cotton garments. Blends may result in less vibrant prints and may not be suitable for all designs.")
 
     # calculate costs
-    garment_cost = get_garment_cost(quantity, product_id)
+    garment_cost = get_garment_cost(quantity, product)
     line_items.append({
         "item": f"Garment - {product['name']}",
         "cost_per_item": r2(garment_cost)
@@ -96,7 +95,7 @@ def quote_dtg_print(
     return {
         "print_type": "dtg",
         "product": product["name"],
-        "product_id": product_id,
+        "product_id": product['id'],
         "quantity": quantity,
         "garment_tone": garment_tone,
         "locations": locations,
@@ -104,6 +103,6 @@ def quote_dtg_print(
         "cost_per_unit": cost_per_unit,
         "order_total": order_total,
         "rush_fee": rush_fee,
-        "total": final_total,
+        "final_total": final_total,
         "warnings": warnings
     }

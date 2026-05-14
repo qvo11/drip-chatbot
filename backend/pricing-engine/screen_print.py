@@ -3,9 +3,8 @@ from typing import Optional
 
 screen_data = load_json("screenprint-pricing.json")
 
-def get_garment_cost(qty: int, product_id: str) -> float:
+def get_garment_cost(qty: int, product: dict) -> float:
     tier = find_tier(screen_data["garment_markup"], qty)
-    product = get_product(product_id)
     if not product or not tier:
         return 0.80 # Default markup if no tier or product found
     return r2(product["base_cost"] * (1 + tier["markup_pct"]))
@@ -70,7 +69,7 @@ def quote_screen_print(
     # calculate costs
     additional_locations = location_count - 1
 
-    garment_cost = get_garment_cost(quantity, product_id)
+    garment_cost = get_garment_cost(quantity, product)
     line_items.append({
         "label": f"Garment - {product['name']}",
         "cost_per_item": r2(garment_cost)
@@ -105,7 +104,7 @@ def quote_screen_print(
     return {
         "print_type": "screen_print",
         "product": product["name"],
-        "product_id": product_id,
+        "product_id": product['id'],
         "quantity": quantity,
         "num_colors": num_colors,
         "location_count": location_count,
@@ -113,6 +112,6 @@ def quote_screen_print(
         "cost_per_unit": cost_per_unit,
         "order_total": order_total, 
         "rush_fee": rush_fee,
-        "total": final_total,
+        "final_total": final_total,
         "warnings": warnings
     }

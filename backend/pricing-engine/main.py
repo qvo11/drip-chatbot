@@ -71,12 +71,12 @@ def screen_print_quote(request: ScreenPrintRequest):
     result = quote_screen_print(
         quantity=request.quantity,
         num_colors=request.num_colors,
-        product_id=request.product_id,
+        product=product,
         location_count=1 + request.additional_locations,
         rush_days=rush_days
     )
 
-    if rush_message:
+    if rush_message and "warnings" in result:
         result["warnings"].append(rush_message)
     return result
 
@@ -94,7 +94,7 @@ def dtg_print_quote(request: DTGPrintRequest):
         quantity=request.quantity,
         locations=request.locations,
         garment_tone=request.garment_tone,
-        product_id=request.product_id,
+        product=product,
         rush_days=rush_days
     )
 
@@ -110,6 +110,6 @@ def embroidery_quote(request: EmbroideryRequest):
         return {"error": f"Product '{request.product_id}' not found."}
 
     return quote_embroidery(
-        product_id=request.product_id,
+        product=product,
         quantity=request.quantity
     )

@@ -123,7 +123,7 @@ export function getColorsMessage(locationLabel: string): string {
 }
 
 export function getConfirmMessage(productName: string): string {
-    return `Perfect! Based on that I'd recommend ${productName}. Want a quote for that product?`;
+    return `Perfect! Based on that I'd recommend the ${productName}. Want a quote for that product?`;
 }
 
 export function determinePrintType(category: string, colorsPerLocation: LocationColors[]): string {

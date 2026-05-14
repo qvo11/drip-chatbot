@@ -26,7 +26,7 @@ export const FILTER_OPTIONS = [
 
 export const PRODUCT_RECOMMENDATIONS: Record<string, Record<string, string>> = {
     tshirt: {
-        best_price: "PC540", 
+        best_price: "PC54", 
         premium:     "5001",    
         athletic:    "ST350",   
         comfort:     "64000",   
