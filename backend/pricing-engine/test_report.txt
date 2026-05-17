@@ -1,0 +1,25 @@
+DRIP CHATBOT — PRICING API TEST REPORT
+Run date: 2026-05-15
+============================================================================================================================
+TEST                                                 STATUS EXPECTED                       ACTUAL
+----------------------------------------------------------------------------------------------------------------------------
+[PASS] SP — quantity below 20                             PASS   minimum                        Minimum quantity for screen 
+[PASS] SP — quantity above 4000                           PASS   custom quote                   Orders of 4,000+ pieces requ
+[PASS] SP — colors above 7                                PASS   7                              Number of colors must be bet
+[PASS] SP — incompatible product (CP77)                   PASS   screen print                   Port Authority Brushed Twill
+[PASS] SP — valid order returns cost_per_unit             PASS   None                           8.95
+[PASS] SP — valid order returns final_total               PASS   None                           447.5
+[PASS] DTG — incompatible product (ST350)                 PASS   dtg                            Sport-Tek PosiCharge Competi
+[PASS] DTG — quantity above 1000                          PASS   custom quote                   Orders of 1,000+ pieces requ
+[PASS] DTG — invalid garment tone                         PASS   garment tone                   Invalid garment tone 'rainbo
+[PASS] DTG — valid order returns cost_per_unit            PASS   None                           34.88
+[PASS] DTG — cotton warning present in warnings array     PASS   cotton                         ['DTG printing works best on
+[PASS] EMB — non-hat product returns manual_quote_required PASS   manual_quote_required          manual_quote_required
+[PASS] EMB — hat product returns manual_quote_required    PASS   manual_quote_required          manual_quote_required
+[PASS] EMB — hat product returns next_steps list          PASS   None                           ['Send your logo or design f
+[PASS] RUSH — 3-day rush (2026-05-20) applies rush_fee > 0 PASS   None                           156.625
+[PASS] RUSH — 3-day rush (2026-05-20) has rush message in warnings PASS   rush                           ['3-day rush applies. Please
+[PASS] RUSH — beyond standard timeline (2026-06-04) rush_fee is 0 PASS   0.0                            0.0
+----------------------------------------------------------------------------------------------------------------------------
+
+PASSED: 17  FAILED: 0  ERRORS: 0  TOTAL: 17

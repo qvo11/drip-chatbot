@@ -58,12 +58,17 @@ def quote_screen_print(
     if str(num_colors) not in available_colors:
         numeric_keys = [int(c) for c in available_colors.keys() if c.isdigit()]
         max_colors = max(numeric_keys) if numeric_keys else 0
-        min_qty = tier.get("qty_min", 0)
+        min_qty_tier = next(
+            (t for t in first_location_tiers if str(num_colors) in t.get("colors", {})),
+            None
+        )
+        min_qty = min_qty_tier["qty_min"] if min_qty_tier else None
 
+        min_qty_msg = f" To use {num_colors} colors, order at least {min_qty} pieces." if min_qty else ""
         return quote_error(
             f"{num_colors} colors is not available at quantity {quantity}. "
-            f"Maximum colors at this quantity is {max_colors}. "
-            f"To use {num_colors} colors, order at least {min_qty} pieces."
+            f"Maximum colors at this quantity is {max_colors}."
+            f"{min_qty_msg}"
         )
     
     # calculate costs

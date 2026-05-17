@@ -26,12 +26,14 @@ export default function DripWidget() {
     const [isLoading, setIsLoading] = useState(false);
     const [bubbleReady, setBubbleReady] = useState(false);
     const [selectedDate, setSelectedDate] = useState("");
+    const [warningsMessage, setWarningsMessage] = useState("");
+    const [errorReturnStep, setErrorReturnStep] = useState<StepId>("needed_by");
 
     const getStepMessage = (): string => {
-        if (currentStep === 'error')
-            return errorMessageRef.current || STEPS['error'].message;
-        if (currentStep === "result") 
+        if (currentStep === "result" || currentStep === "error")
             return resultMessage;
+        if (currentStep === "warnings")
+            return warningsMessage;
         if (currentStep === "colors_per_location") {
             const index = quoteData.current_location_index ?? 0;
             const label = quoteData.location_labels?.[index] ?? "this location";
@@ -255,7 +257,7 @@ export default function DripWidget() {
 
             const response = await fetch(`http://localhost:8000${endpoint}`, {
                 method: 'POST',
-                headers: {"Content-Type": "/application/json"},
+                headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(body),
             });
 
@@ -263,8 +265,10 @@ export default function DripWidget() {
 
             // request succeeded but logic failed (soft error)
             if (result.error) {
-                errorMessageRef.current = result.error
-                setCurrentStep("error"); 
+                setResultMessage(result.error);
+                const returnStep: StepId = result.error.toLowerCase().includes("quantity") ? "quantity" : "needed_by";
+                setErrorReturnStep(returnStep);
+                setCurrentStep("error");
                 return;
             }
 
@@ -272,17 +276,27 @@ export default function DripWidget() {
                 .map(l => `${l.label}: ${l.colors} color${l.colors > 1 ? "s" : ""}`)
                 .join(", ");
 
-            setResultMessage(`Here's your quote for ${data.quantity} ${data.product_name}(s)!\n\n` +
+            const quoteText = `Here's your quote for ${data.quantity} ${data.product_name}(s)!\n\n` +
                 `Print: ${data.print_type?.replace("_", " ").toUpperCase()}\n` +
                 `Locations: ${locationSummary}\n\n` +
-                `Cost per unit: $${result.cost_per_unit}\n` +
-                `Order total:   $${result.order_total}\n` +
-                (result.rush_fee > 0 ? `Rush fee: $${result.rush_fee}\n` : "") +
-                `Final total:   $${result.total}`);
-            setCurrentStep("result");
+                `Cost per unit: $${Number(result.cost_per_unit).toFixed(2)}\n` +
+                `Order total:   $${Number(result.order_total).toFixed(2)}\n` +
+                (result.rush_fee > 0 ? `Rush fee:      $${Number(result.rush_fee).toFixed(2)}\n` : "") +
+                `Final total:   $${Number(result.final_total).toFixed(2)}`;
+
+            setResultMessage(quoteText);
+
+            if (result.warnings?.length) {
+                setWarningsMessage(`Heads up: ${result.warnings.join(" ")}`);
+                setCurrentStep("warnings");
+            } else {
+                setCurrentStep("result");
+            }
 
         } catch (err) {
             console.error("Quote fetch failed:", err);
+            setResultMessage("Something went wrong connecting to the server. Please try again.");
+            setErrorReturnStep("needed_by");
             setCurrentStep("error");
         } finally {
             setIsLoading(false);
@@ -404,6 +418,7 @@ export default function DripWidget() {
                                     min={1}
                                     value={numberInput}
                                     onChange={(num) => setNumberInput(num.target.value)}
+                                    onKeyDown={(e) => { if (e.key === "Enter" && numberInput.trim()) handleAnswer(numberInput); }}
                                     placeholder="Enter quantity..."
                                     className="border-2 border-brand-navy/20 rounded-xl px-4 py-2 text-brand-navy text-sm focus:outline-none focus:border-brand-red"
                                 />
@@ -477,10 +492,29 @@ export default function DripWidget() {
                             </div>
                         )}
 
+                        {currentStep === "result" && (
+                            <div ref={buttonsRef} className="flex justify-center gap-3">
+                                <Button onClick={() => { setQuoteData({}); setCurrentStep("product"); }}>
+                                    Start New Quote
+                                </Button>
+                                <Button onClick={() => console.log("Learn more clicked")}>
+                                    Learn More
+                                </Button>
+                            </div>
+                        )}
+
+                        {currentStep === "warnings" && (
+                            <div ref={buttonsRef} className="flex justify-center">
+                                <Button onClick={() => setCurrentStep("result")}>
+                                    Got it
+                                </Button>
+                            </div>
+                        )}
+
                         {currentStep === "error" && (
                             <div ref={buttonsRef} className="flex justify-center">
-                                <Button onClick={() => {setQuoteData({}); setCurrentStep("product");}}>
-                                Start Over 
+                                <Button onClick={() => setCurrentStep(errorReturnStep)}>
+                                    Try Again
                                 </Button>
                             </div>
                         )}

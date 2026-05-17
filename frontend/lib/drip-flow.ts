@@ -1,5 +1,5 @@
 export type StepId = "intro" | "product" | "product_filter" | "product_confirm" | "product_list" | "quantity"
-    | "location" | "colors_per_location" | "garment_tone" | "needed_by" | "result" | "error";
+    | "location" | "colors_per_location" | "garment_tone" | "needed_by" | "result" | "warnings" | "error";
 
 export interface LocationColors {
     location: string;
@@ -71,6 +71,10 @@ export const STEPS: Record<StepId, StepConfig> = {
     result: {
         message: "", // built from API response
         type: "display",
+    },
+    warnings: {
+        message: "", // built dynamically from API warnings
+        type: "buttons",
     },
     error: {
         message: "Something went wrong getting your quote. Please try again or contact us!",

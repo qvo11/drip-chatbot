@@ -24,4 +24,4 @@ def quote_error(message: str) -> dict:
 def get_rush_fee(order_cost: float, rush_days: int) -> Optional[float]:
     if not rush_days:
         return 0.0
-    return rush_rates.get(rush_days, 0.0) * order_cost
+    return r2(rush_rates.get(rush_days, 0.0) * order_cost)

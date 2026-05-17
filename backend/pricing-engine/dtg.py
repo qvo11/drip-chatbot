@@ -43,13 +43,9 @@ def quote_dtg_print(
 
     if quantity >= 1000:
         return quote_error("Orders of 1,000+ pieces require a custom quote. Please contact us!")
-    
-    # validate garment tone & print 
+
     if garment_tone not in ["light", "dark"]:
         return quote_error(f"Invalid garment tone '{garment_tone}'. Must be 'light' or 'dark'.")
-    
-    if not locations or len(locations) == 0:
-        return quote_error("At least one print location is required.")
 
     for i, loc in enumerate(locations):
         if "size" not in loc:

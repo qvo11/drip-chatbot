@@ -98,7 +98,7 @@ def dtg_print_quote(request: DTGPrintRequest):
         rush_days=rush_days
     )
 
-    if rush_message:
+    if rush_message and "warnings" in result:
         result["warnings"].append(rush_message)
     return result
 

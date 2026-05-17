@@ -7,7 +7,7 @@ from utils import rush_rates
 
 @lru_cache(maxsize=None)
 def get_us_holidays(year: int):
-    return holidays.US(year=year)
+    return holidays.country_holidays('US', years=year)
 
 def is_holiday(check_date: date) -> bool:
     return check_date in get_us_holidays(check_date.year)
