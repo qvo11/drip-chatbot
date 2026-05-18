@@ -129,8 +129,25 @@ export default function DripWidget() {
 
         // QUANTITY
         if (currentStep === 'quantity') {
+            const qty = parseInt(value);
+            if (qty < 20) {
+                setQuoteData(prev => ({...prev, quantity: qty}));
+                setCurrentStep("quantity_upgrade");
+                return;
+            }
             setQuoteData(prev => ({...prev, quantity: parseInt(value)}));
             setCurrentStep("location");
+            return;
+        }
+
+        //  QUANTITY UPGRADE
+        if (currentStep === "quantity_upgrade") {
+            if (value === "dtg") {
+                setQuoteData(prev => ({...prev, print_type: "dtg"}));
+                setCurrentStep("location");
+            } else {
+                setCurrentStep("quantity");
+            }
             return;
         }
 
@@ -427,6 +444,23 @@ export default function DripWidget() {
                                 </Button>
                             </div>
                         )}
+
+                        {currentStep === "quantity_upgrade" && (
+                            <div ref={buttonsRef} className="flex flex-col gap-2">
+                                <Button
+                                    onClick={() => handleAnswer("dtg")}
+                                    className="primary px-6 py-2 text-white hover:bg-brand-teal"
+                                >
+                                    DTG it is!
+                                </Button>
+                                <Button
+                                    onClick={() => handleAnswer("increase")}
+                                    className="primary px-6 py-2 text-white hover:bg-brand-teall"
+                                >
+                                    Increase order amount
+                                </Button>
+                            </div>
+)}
 
                         {currentStep === "location" && (
                             <div ref={buttonsRef} className="flex flex-col gap-2">

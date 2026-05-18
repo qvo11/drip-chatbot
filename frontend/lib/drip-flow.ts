@@ -1,5 +1,5 @@
 export type StepId = "intro" | "product" | "product_filter" | "product_confirm" | "product_list" | "quantity"
-    | "location" | "colors_per_location" | "garment_tone" | "needed_by" | "result" | "warnings" | "error";
+    | "location" | "colors_per_location" | "garment_tone" | "needed_by" | "result" | "warnings" | "error" | "quantity_upgrade";
 
 export interface LocationColors {
     location: string;
@@ -73,13 +73,17 @@ export const STEPS: Record<StepId, StepConfig> = {
         type: "display",
     },
     warnings: {
-        message: "", // built dynamically from API warnings
+        message: "", // built from API warnings
         type: "buttons",
     },
     error: {
         message: "Something went wrong getting your quote. Please try again or contact us!",
         type: "buttons",
     },
+    quantity_upgrade: {
+        message: "Screen printing requires a minimum order of 20 peices. You can switch to DTG (great for small runs!) or increase your quantity.",
+        type: "buttons"
+    }
 };
 
 export const LOCATION_OPTIONS: Record<string, { label: string; value: string }[]> = {
