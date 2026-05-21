@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Header, Depends, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Optional
@@ -8,8 +8,11 @@ from dtg import quote_dtg_print
 from emb import quote_embroidery
 from rush import calculate_rush
 from utils import load_json
+import os
 
 app = FastAPI()
+
+ALLOWED_ORIGINS = os.getenv("ALLOWED_ORIGINS", "http://localhost:3000").split(",")
 
 app.add_middleware(
     CORSMiddleware,
@@ -17,6 +20,14 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+API_SECRET_KEY = os.environ.get("API_SECRET_KEY", "")
+
+def verify_api_key(x_api_key: str = Header(...)):
+    if not API_SECRET_KEY:
+        raise HTTPException(status_code=500, detail="API secret key not configured.")
+    if x_api_key != API_SECRET_KEY:
+        raise HTTPException(status_code=403, detail="Unauthorized.")
 
 # load products at startup
 products = load_json("products.json")
@@ -60,7 +71,7 @@ def resolve_rush(needed_by: str, standard_days: int = 7) -> Optional[tuple]:
 
 # endpoints
 @app.post("/api/quote/screen-print")
-def screen_print_quote(request: ScreenPrintRequest):
+def screen_print_quote(request: ScreenPrintRequest, _Depends(verify_api_key)):
     product = resolve_product(request.product_id)
     if not product:
         return {"error": f"Product '{request.product_id}' not found."}
@@ -82,7 +93,7 @@ def screen_print_quote(request: ScreenPrintRequest):
 
 
 @app.post("/api/quote/dtg")
-def dtg_print_quote(request: DTGPrintRequest):
+def dtg_print_quote(request: DTGPrintRequest, _Depends(verify_api_key)):
     product = resolve_product(request.product_id)
     if not product:
         return {"error": f"Product '{request.product_id}' not found."}
@@ -104,7 +115,7 @@ def dtg_print_quote(request: DTGPrintRequest):
 
 
 @app.post("/api/quote/embroidery")
-def embroidery_quote(request: EmbroideryRequest):
+def embroidery_quote(request: EmbroideryRequest, _Depends(verify_api_key)):
     product = resolve_product(request.product_id)
     if not product:
         return {"error": f"Product '{request.product_id}' not found."}
