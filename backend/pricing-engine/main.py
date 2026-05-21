@@ -64,7 +64,7 @@ def screen_print_quote(request: ScreenPrintRequest):
     product = resolve_product(request.product_id)
     if not product:
         return {"error": f"Product '{request.product_id}' not found."}
-    if "screen_print" not in product.get("decoration_compatibility", []):
+    if "screen_print" not in product.get("print_compatibility", []):
         return {"error": f"{product['name']} does not support screen printing."}
 
     rush_days, rush_message = resolve_rush(request.needed_by, standard_days=7)
@@ -76,7 +76,7 @@ def screen_print_quote(request: ScreenPrintRequest):
         rush_days=rush_days
     )
 
-    if rush_message and "warnings" in result:
+    if rush_days and rush_message and "warnings" in result:
         result["warnings"].append(rush_message)
     return result
 
@@ -86,7 +86,7 @@ def dtg_print_quote(request: DTGPrintRequest):
     product = resolve_product(request.product_id)
     if not product:
         return {"error": f"Product '{request.product_id}' not found."}
-    if "dtg" not in product.get("decoration_compatibility", []):
+    if "dtg" not in product.get("print_compatibility", []):
         return {"error": f"{product['name']} does not support DTG printing."}
 
     rush_days, rush_message = resolve_rush(request.needed_by, standard_days=5)
@@ -98,7 +98,7 @@ def dtg_print_quote(request: DTGPrintRequest):
         rush_days=rush_days
     )
 
-    if rush_message and "warnings" in result:
+    if rush_days and rush_message and "warnings" in result:
         result["warnings"].append(rush_message)
     return result
 

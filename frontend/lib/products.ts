@@ -12,7 +12,7 @@ export interface Product {
         type?: string
     };
     best_for?: string[];
-    decoration_compatibility: string[];
+    print_compatibility: string[];
 }
 
 export const products: Product[] = productsData as Product[];
@@ -53,4 +53,10 @@ export function getRecommendedProduct(category: string, filter: string) {
 
 export function getProductsByCategory(category: string): Product[] {
     return products.filter((p: Product) => p.category === category);
+}
+
+export function getDTGCompatible(category: string): Product[] {
+    return products.filter(
+        (p) => p.category === category && p.print_compatibility.includes("dtg")
+    );
 }

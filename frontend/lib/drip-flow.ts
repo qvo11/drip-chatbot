@@ -1,5 +1,6 @@
-export type StepId = "intro" | "product" | "product_filter" | "product_confirm" | "product_list" | "quantity"
-    | "location" | "colors_per_location" | "garment_tone" | "needed_by" | "result" | "warnings" | "error" | "quantity_upgrade";
+export type StepId = "intro" | "product" | "product_filter" | "product_confirm" | "product_list" | "quantity" | "quantity_upgrade"
+    | "location" | "colors_per_location" | "dtg_incompatible" | "dtg_product_list" |"garment_tone" | "needed_by" | "result" | 
+    "warnings" | "error";
 
 export interface LocationColors {
     location: string;
@@ -34,7 +35,7 @@ export const STEPS: Record<StepId, StepConfig> = {
     },
     product: {
         message: "What product do you need?",
-        type: "buttons",
+        type: "buttons"
     },
     product_filter: {
         message: "What are you looking for in a product?",
@@ -52,6 +53,10 @@ export const STEPS: Record<StepId, StepConfig> = {
         message: "How many do you need?",
         type: "number_input",
     },
+    quantity_upgrade: {
+        message: "Screen printing requires a minimum order of 20 peices. You can switch to DTG (great for small runs!) or increase your quantity.",
+        type: "buttons"
+    },
     location: {
         message: "Where on the garment do you want your design(s)? Select all that apply, then click Done.",
         type: "multi_select",
@@ -59,6 +64,14 @@ export const STEPS: Record<StepId, StepConfig> = {
     colors_per_location: {
         message: "", // built dynamically
         type: "number_input",
+    },
+    dtg_incompatible: {
+        message: "This product doesn't support DTG printing (required for 8+ colors). What would you like to do?",
+        type: "buttons"
+    },
+    dtg_product_list: {
+        message: "Here are products that support DTG printing:",
+        type: "product_list"
     },
     garment_tone: {
         message: "Is the garment light or dark colored?",
@@ -79,10 +92,6 @@ export const STEPS: Record<StepId, StepConfig> = {
     error: {
         message: "Something went wrong getting your quote. Please try again or contact us!",
         type: "buttons",
-    },
-    quantity_upgrade: {
-        message: "Screen printing requires a minimum order of 20 peices. You can switch to DTG (great for small runs!) or increase your quantity.",
-        type: "buttons"
     }
 };
 
@@ -95,35 +104,35 @@ export const LOCATION_OPTIONS: Record<string, { label: string; value: string }[]
         { label: "Left Sleeve", value: "left_sleeve"}
     ],
     hoodie: [
-        { label: "Front",      value: "front" },
-        { label: "Back",       value: "back" },
+        { label: "Front", value: "front" },
+        { label: "Back", value: "back" },
         { label: "Left Chest", value: "left_chest" },
-        { label: "Right Sleeve",     value: "right_sleeve" },
+        { label: "Right Sleeve", value: "right_sleeve" },
         { label: "Left Sleeve", value: "left_sleeve"}
 
     ],
     hat: [
-        { label: "Front",      value: "front" },
-        { label: "Back",       value: "back" },
+        { label: "Front", value: "front" },
+        { label: "Back", value: "back" },
         { label: "Right Side", value: "right_side" },
-        { label: "Left Side",  value: "left_side" },
+        { label: "Left Side", value: "left_side" },
     ],
 };
 
 export const PRODUCT_BUTTONS = [
     { label: "T-Shirts", value: "tshirt" },
-    { label: "Hoodies",  value: "hoodie" },
-    { label: "Hats",     value: "hat" },
+    { label: "Hoodies", value: "hoodie" },
+    { label: "Hats", value: "hat" },
 ];
 
 export const INTRO_BUTTONS = [
     { label: "Get a Quote", value: "get_quote" },
-    { label: "Learn More",  value: "learn_more" },
+    { label: "Learn More", value: "learn_more" },
 ];
 
 export const GARMENT_TONE_BUTTONS = [
     { label: "Light", value: "light" },
-    { label: "Dark",  value: "dark" },
+    { label: "Dark", value: "dark" },
 ];
 
 export function getColorsMessage(locationLabel: string): string {
