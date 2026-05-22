@@ -1,3 +1,6 @@
+from dotenv import load_dotenv
+load_dotenv()  # load environment variables from .env file
+
 from fastapi import FastAPI, Header, Depends, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel

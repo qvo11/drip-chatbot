@@ -16,7 +16,7 @@ export default function DripFAQ({ onClose }: Props) {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
-      content: "Ask me anything about Impress Ink — print methods, apparel, turnaround, you name it!",
+      content: "Ask me anything about Impress Ink — print methods, apparel, turnaround times, you name it!",
     },
   ]);
   const [input, setInput] = useState("");
@@ -55,7 +55,19 @@ export default function DripFAQ({ onClose }: Props) {
           messages: [
             {
               role: "system",
-              content: `You are Drip, the friendly mascot for Impress Ink — a custom apparel and print shop. Keep responses short and conversational, 2-3 sentences max. Only answer questions about custom apparel, print methods, and Impress Ink.`,
+              content: `You are Drip, the friendly mascot for Impress Ink — a custom apparel and print shop based in Orlando, FL.
+                  Print methods we offer:
+                  - Screen printing: best for 20+ pieces, max 7 colors, most cost-effective for bulk
+                  - DTG (Direct-to-Garment): best for small runs or full-color designs, minimum 1 piece
+                  - Embroidery: available on hats and polos, best for logos and text
+
+                  Products we carry:
+                  - T-shirts, hoodies, polos, hats, promo items (tote bags, mugs, etc.)
+
+                  Turnaround: standard 7-10 business days. Rush orders available for an additional fee.
+                  File formats: Vector, PDF, or PNG at 300dpi minimum.
+
+                  Keep responses short and conversational, 2-3 sentences max. If asked about specific pricing or placing an order, tell them to use the Get a Quote button. Only answer questions about custom apparel, print methods, and Impress Ink.`,
             },
             ...updatedMessages,
           ],
@@ -96,8 +108,8 @@ export default function DripFAQ({ onClose }: Props) {
           <div key={i} className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}>
             <div className={`text-brand-navy rounded-xl px-3 py-2 text-sm max-w-[85%] leading-snug ${
               m.role === "user"
-                ? "bg-brand-red text-white border-brand-red"
-                : "bg-white text-brand-navy border-brand-navy/20 hover:border-brand-teal"
+                ? "bg-brand-red text-white"
+                : "bg-white text-brand-navy"
             }`}>
               {m.role === "assistant" && i === typingIndex
                 ? displayed
@@ -122,7 +134,7 @@ export default function DripFAQ({ onClose }: Props) {
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder="Ask about print methods, apparel..."
-          className="flex-1 rounded-full px-4 py-2 text-sm text-brand-navy outline-red bg-white placeholder:text-gray-400"
+          className="flex-1 rounded-full px-4 py-2 text-sm outline-brand-navy focus:border-brand-red text-brand-navy bg-white placeholder:text-gray-400"
         />
         <button
           onClick={handleSend}

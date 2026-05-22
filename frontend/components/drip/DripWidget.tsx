@@ -388,6 +388,7 @@ export default function DripWidget() {
             });
 
             const result = await response.json();
+            console.log("API result:", result); // debugging 
 
             // handle emb response 
             if (data.print_type === "embroidery") {
