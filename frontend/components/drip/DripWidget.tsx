@@ -9,6 +9,7 @@ import { FILTER_OPTIONS, getRecommendedProduct, getProductsByCategory, products,
 import { Button } from "../ui/button";
 import DripSVG from "./DripSVG";
 import { gsap } from "gsap";
+import DripFAQ from "./DripFAQ";
 
 
 export default function DripWidget() {
@@ -21,6 +22,7 @@ export default function DripWidget() {
     const buttonsRef = useRef<HTMLDivElement>(null);
     const errorMessageRef = useRef("")
 
+    const [showFAQ, setShowFAQ] = useState(false);
     const [currentStep, setCurrentStep] = useState<StepId>("intro");
     const [quoteData, setQuoteData] = useState<QuoteData>({});
     const [resultMessage, setResultMessage] = useState("");
@@ -86,7 +88,7 @@ export default function DripWidget() {
         // INTRO
         if (currentStep === "intro") {
             if (value === "get_quote") setCurrentStep("product");
-            else console.log("Learn more clicked");
+            else setShowFAQ(true);
             return;
         }
 
@@ -474,6 +476,10 @@ export default function DripWidget() {
         
                     {/* Bubble body */}
                     <div className="bg-white text-brand-navy rounded-2xl shadow-xl px-6 py-5 w-96 min-h-[160px] flex flex-col items-center">
+                        {showFAQ ? (
+                            <DripFAQ onClose={() => setShowFAQ(false)} />
+                        ) : (
+                        <>
                         <p className="text-lg text-center font-medium whitespace-pre-line mb-4">{displayed}</p>
 
                         {isLoading && (
@@ -491,7 +497,7 @@ export default function DripWidget() {
                                     key={btn.value}
                                     onClick={() => handleAnswer(btn.value)}
                                     >
-                                        {btn.label}
+                                    {btn.label}
                                     </Button>
                                 ))}
                             </div>
@@ -694,7 +700,7 @@ export default function DripWidget() {
                                 <Button onClick={resetAll}>
                                     Start New Quote
                                 </Button>
-                                <Button onClick={() => console.log("Learn more clicked")}>
+                                <Button onClick={() => setShowFAQ(true)}>
                                     Learn More
                                 </Button>
                             </div>
@@ -716,6 +722,8 @@ export default function DripWidget() {
                             </div>
                         )}
                     </div>
+                    </>
+                    )}
                     </div>
                 </div>
             </div>

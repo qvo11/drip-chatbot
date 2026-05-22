@@ -71,7 +71,7 @@ def resolve_rush(needed_by: str, standard_days: int = 7) -> Optional[tuple]:
 
 # endpoints
 @app.post("/api/quote/screen-print")
-def screen_print_quote(request: ScreenPrintRequest, _Depends(verify_api_key)):
+def screen_print_quote(request: ScreenPrintRequest, api_key: str = Depends(verify_api_key)):
     product = resolve_product(request.product_id)
     if not product:
         return {"error": f"Product '{request.product_id}' not found."}
@@ -93,7 +93,7 @@ def screen_print_quote(request: ScreenPrintRequest, _Depends(verify_api_key)):
 
 
 @app.post("/api/quote/dtg")
-def dtg_print_quote(request: DTGPrintRequest, _Depends(verify_api_key)):
+def dtg_print_quote(request: DTGPrintRequest, api_key: str = Depends(verify_api_key)):
     product = resolve_product(request.product_id)
     if not product:
         return {"error": f"Product '{request.product_id}' not found."}
@@ -115,7 +115,7 @@ def dtg_print_quote(request: DTGPrintRequest, _Depends(verify_api_key)):
 
 
 @app.post("/api/quote/embroidery")
-def embroidery_quote(request: EmbroideryRequest, _Depends(verify_api_key)):
+def embroidery_quote(request: EmbroideryRequest, api_key: str = Depends(verify_api_key)):
     product = resolve_product(request.product_id)
     if not product:
         return {"error": f"Product '{request.product_id}' not found."}
