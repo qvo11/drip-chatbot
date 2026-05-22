@@ -1,6 +1,15 @@
-# Drip Chatbot — Pricing Engine
+# Drip
 
-A pricing engine API for a custom apparel print shop. Supports instant quoting for screen printing and DTG (direct-to-garment) printing, with rush fee calculation and product compatibility validation. Embroidery quotes are routed to a manual workflow.
+A guided chatbot for instant custom apparel quotes. Drip walks customers through product selection, print type, quantity, and turnaround — then returns a real-time price via a backend pricing engine.
+
+---
+
+## Overview
+
+Drip is a two-layer monorepo:
+
+- **Frontend** — Next.js chatbot UI with a step-by-step quote flow, typewriter animations, and product browsing
+- **Backend** — FastAPI pricing engine that calculates quotes for screen printing, DTG, and embroidery, with rush fee support
 
 ---
 
@@ -8,120 +17,114 @@ A pricing engine API for a custom apparel print shop. Supports instant quoting f
 
 ```
 drip-chatbot/
-├── lib/
-│   └── pricing-engine/
-│       ├── main.py             # FastAPI app with /api/quote endpoints
-│       ├── pricing.py          # Unified get_quote() dispatcher
-│       ├── screen_print.py     # Screen print quoting logic
-│       ├── dtg.py              # DTG quoting logic
-│       ├── emb.py              # Embroidery placeholder (manual quote)
-│       ├── rush.py             # Rush fee & business day calculator
-│       ├── utils.py            # Shared helpers (load_json, find_tier, etc.)
-│       └── data/
-│           ├── products.json           # Product catalog with base costs & decoration compatibility
-│           ├── screenprint-pricing.json
-│           ├── dtg-pricing.json
-│           └── emb-pricing.json
-├── test_pricing.py             # Integration tests for all quote types
-└── package.json
+├── frontend/                        # Next.js app
+│   ├── app/                         # App router (layout, page, globals)
+│   ├── components/                  # UI components (Drip mascot, buttons, scroll area)
+│   ├── hooks/                       # useTypewriter hook
+│   ├── lib/                         # Quote flow logic, product catalog, utilities
+│   └── public/                      # Static assets (SVGs)
+│
+└── backend/
+    └── pricing-engine/              # FastAPI app
+        ├── main.py                  # App entry point with /api/quote endpoints
+        ├── screen_print.py          # Screen print quoting logic
+        ├── dtg.py                   # DTG quoting logic
+        ├── emb.py                   # Embroidery (routes to manual workflow)
+        ├── rush.py                  # Rush fee & business day calculator
+        ├── utils.py                 # Shared helpers
+        ├── data/                    # Pricing and product JSON data
+        └── requirements.txt
 ```
 
 ---
 
-## API Endpoints
+## Frontend
 
-### `POST /api/quote/screen-print`
+Built with Next.js (App Router), Tailwind CSS, and GSAP for animations.
 
-Returns a line-item quote for screen printing.
+The chatbot guides users through a fixed quote flow:
 
-**Request body:**
-```json
-{
-  "product_id": "PC450",
-  "quantity": 48,
-  "num_colors": 2,
-  "additional_locations": 0,
-  "needed_by": "2026-05-10"
-}
-```
+1. Choose a product category and specific product
+2. Select print type (screen print, DTG, or embroidery)
+3. Enter quantity, print locations, and needed-by date
+4. Receive an itemized quote
 
-**Constraints:**
-- Minimum 20 pieces, maximum 3,999 (4,000+ requires custom quote)
-- 1–7 colors supported
-- `needed_by` triggers rush fee if inside standard 7-business-day window
+**Tech:** Next.js · TypeScript · Tailwind CSS · GSAP · Lucide React
 
----
-
-### `POST /api/quote/dtg`
-
-Returns a line-item quote for DTG printing.
-
-**Request body:**
-```json
-{
-  "product_id": "PC450",
-  "quantity": 12,
-  "garment_tone": "light",
-  "locations": [
-    { "size": "10x10", "label": "Front" }
-  ],
-  "needed_by": "2026-05-03"
-}
-```
-
-**Constraints:**
-- Minimum 1 piece, maximum 999
-- `garment_tone`: `"light"` or `"dark"`
-- Valid print sizes: `5x5`, `10x10`, `12x14`, `16x21`
-- Standard production: 5 business days
-
----
-
-### `POST /api/quote/embroidery`
-
-Routes to a manual quote workflow — returns contact instructions.
-
-**Request body:**
-```json
-{
-  "product_id": "112",
-  "quantity": 24
-}
-```
-
----
-
-## Rush Fees
-
-Rush fees are calculated based on business days available before the requested date. A 12PM order cutoff applies — orders placed at or after noon count from the next business day.
-
-| Business Days Available | Rush Markup |
-|-------------------------|-------------|
-| 5 days                  | +20%        |
-| 4 days                  | +30%        |
-| 3 days                  | +40%        |
-| 2 days                  | +50%        |
-| 1 day                   | +75%        |
-| Same day                | +100%       |
-
----
-
-## Running the API
+### Setup
 
 ```bash
-pip install fastapi uvicorn
-cd lib/pricing-engine
+cd frontend
+npm install
+cp .env.local.save .env.local   # fill in values (see Environment Variables)
+npm run dev
+```
+
+App runs at `http://localhost:3000`.
+
+---
+
+## Backend — Pricing Engine
+
+Built with FastAPI and Python. All endpoints require an `X-API-Key` header.
+
+### Endpoints
+
+#### `POST /api/quote/screen-print`
+Returns a line-item quote for screen printing. Accepts product ID, quantity, number of colors, additional print locations, and an optional needed-by date.
+
+#### `POST /api/quote/dtg`
+Returns a line-item quote for DTG (direct-to-garment) printing. Accepts product ID, quantity, garment tone, print locations with sizes, and an optional needed-by date.
+
+#### `POST /api/quote/embroidery`
+Routes embroidery requests to a manual quote workflow — returns contact instructions rather than an automated price.
+
+### Rush Fees
+If a needed-by date is provided and falls within the standard production window, a rush fee is applied. The fee scales with how many business days are available. A 12PM order cutoff applies.
+
+### Setup
+
+```bash
+cd backend/pricing-engine
+pip install -r requirements.txt
+cp ../../.env .env               # or set env vars manually
 uvicorn main:app --reload
 ```
 
-API will be available at `http://localhost:8000`.
+API runs at `http://localhost:8000`.
+
+### Tests
+
+```bash
+python test_api.py
+```
 
 ---
 
-## Running Tests
+## Environment Variables
 
-```bash
-python test_pricing.py
-```
+### Frontend (`frontend/.env.local`)
 
-Tests cover screen print, DTG, embroidery, rush fees, and edge cases (below-minimum quantity, incompatible products).
+| Variable | Description |
+|---|---|
+| `NEXT_PUBLIC_API_URL` | Base URL of the pricing engine (e.g. `http://localhost:8000`) |
+| `NEXT_PUBLIC_API_KEY` | API key sent as `X-API-Key` header |
+
+### Backend
+
+| Variable | Description |
+|---|---|
+| `API_SECRET_KEY` | Secret key used to authenticate incoming requests |
+| `ALLOWED_ORIGINS` | Comma-separated list of allowed CORS origins |
+
+---
+
+## Deployment
+
+### Backend — Railway
+
+The backend is configured for Railway via `backend/railway.toml`. Set `API_SECRET_KEY` and `ALLOWED_ORIGINS` in Railway's environment variable settings.
+
+### Frontend — Vercel
+
+Deploy the `frontend/` directory. Set `NEXT_PUBLIC_API_URL` to the Railway backend URL and `NEXT_PUBLIC_API_KEY` to match the backend secret.
