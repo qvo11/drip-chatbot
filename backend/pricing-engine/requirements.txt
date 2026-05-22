@@ -3,3 +3,4 @@ uvicorn
 pydantic
 holidays
 python-multipart
+python-dotenv

@@ -1,6 +1,3 @@
-from dotenv import load_dotenv
-load_dotenv()  # load environment variables from .env file
-
 from fastapi import FastAPI, Header, Depends, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -12,6 +9,10 @@ from emb import quote_embroidery
 from rush import calculate_rush
 from utils import load_json
 import os
+
+if os.environ.get("RAILWAY_ENVIRONMENT") is None:
+    from dotenv import load_dotenv
+    load_dotenv()
 
 app = FastAPI()
 
