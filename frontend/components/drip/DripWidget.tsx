@@ -329,8 +329,6 @@ export default function DripWidget() {
 
     // API Call
     const fetchQuote = async (data: QuoteData) => {
-        console.log("API URL:", process.env.NEXT_PUBLIC_API_URL); // debugging
-        console.log("API KEY set:", !!process.env.NEXT_PUBLIC_API_KEY); // debugging
         setIsLoading(true);
         try {
             const SIZE_MAP: Record<string, string> = {
@@ -390,7 +388,6 @@ export default function DripWidget() {
             });
 
             const result = await response.json();
-            console.log("API result:", result); // debugging 
 
             // handle emb response 
             if (data.print_type === "embroidery") {
