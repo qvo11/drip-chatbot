@@ -9,6 +9,7 @@ from emb import quote_embroidery
 from rush import calculate_rush
 from utils import load_json
 import os
+print("ALLOWED_ORIGINS raw:", repr(os.environ.get("ALLOWED_ORIGINS")))
 
 if os.environ.get("RAILWAY_ENVIRONMENT") is None:
     from dotenv import load_dotenv
