@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Header, Depends, HTTPException
+from fastapi import FastAPI, Header, Depends, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Optional
@@ -9,24 +9,26 @@ from emb import quote_embroidery
 from rush import calculate_rush
 from utils import load_json
 import os
-print("ALLOWED_ORIGINS raw:", repr(os.environ.get("ALLOWED_ORIGINS")))
 
 if os.environ.get("RAILWAY_ENVIRONMENT") is None:
     from dotenv import load_dotenv
     load_dotenv()
 
-app = FastAPI()
+ALLOWED_ORIGINS = [
+    origin.strip()
+    for origin in os.getenv("ALLOWED_ORIGINS", "http://localhost:3000").split(",")
+]
 
-ALLOWED_ORIGINS = os.getenv("ALLOWED_ORIGINS", "http://localhost:3000").split(",")
+API_SECRET_KEY = os.environ.get("API_SECRET_KEY", "")
+
+app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
+    allow_origins=ALLOWED_ORIGINS,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-API_SECRET_KEY = os.environ.get("API_SECRET_KEY", "")
 
 def verify_api_key(x_api_key: str = Header(...)):
     if not API_SECRET_KEY:
