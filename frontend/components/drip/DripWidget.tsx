@@ -404,28 +404,29 @@ export default function DripWidget() {
             }
 
             // request succeeded but logic failed (soft error)
-            if (result.error) {
-                setResultMessage(result.error);
-                const errorMsg = result.error.toLowerCase();
+            if (!response.ok || result.error || result.detail) {
+                const errorMsg = result.error || result.detail || "Something went wrong";
+                const errorMsgLower = errorMsg.toLowerCase();
                 let returnStep: StepId = "needed_by";
 
-                if (errorMsg.includes("quantity") || errorMsg.includes("minimum")) {
+                if (errorMsgLower.includes("quantity") || errorMsg.includes("minimum")) {
                     returnStep = 'quantity';
                 } else if (
-                    errorMsg.includes("support") || 
-                    errorMsg.includes("compatibility") || 
-                    errorMsg.includes("not found") ||
-                    errorMsg.includes("dtg") ||
-                    errorMsg.includes("screen") ||
-                    errorMsg.includes("does not")
+                    errorMsgLower.includes("support") || 
+                    errorMsgLower.includes("compatibility") || 
+                    errorMsgLower.includes("not found") ||
+                    errorMsgLower.includes("dtg") ||
+                    errorMsgLower.includes("screen") ||
+                    errorMsgLower.includes("does not")
                 ) {
                     returnStep = "product";
-                } else if (errorMsg.includes("color")) {
+                } else if (errorMsgLower.includes("color")) {
                     returnStep = "colors_per_location";
-                } else if (errorMsg.includes("date") || errorMsg.includes("parse")) {
+                } else if (errorMsgLower.includes("date") || errorMsgLower.includes("parse")) {
                     returnStep = "needed_by";
                 }
 
+                setResultMessage(errorMsg);
                 setErrorReturnStep(returnStep);
                 setCurrentStep('error');
                 return;
