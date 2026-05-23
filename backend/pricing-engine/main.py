@@ -21,6 +21,8 @@ ALLOWED_ORIGINS = [
 
 API_SECRET_KEY = os.environ.get("API_SECRET_KEY", "")
 
+print(f"Allowed origins: {ALLOWED_ORIGINS}")
+
 app = FastAPI()
 
 app.add_middleware(
