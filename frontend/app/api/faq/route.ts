@@ -18,5 +18,7 @@ export async function POST(req: NextRequest) {
     });
 
     const data = await response.json();
+    console.log("Key present:", !!process.env.OPENAI_API_KEY);
+    console.log("Key prefix:", process.env.OPENAI_API_KEY?.slice(0, 7));
     return NextResponse.json(data);
 }
