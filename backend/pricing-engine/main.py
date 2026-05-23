@@ -59,7 +59,7 @@ class DTGPrintRequest(BaseModel):
 class EmbroideryRequest(BaseModel):
     product_id: str
     quantity: int
-    
+
 # helpers
 def resolve_product(product_id: str) -> Optional[dict]:
     for p in products:

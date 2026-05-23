@@ -73,7 +73,6 @@ export default function DripFAQ({ onClose }: Props) {
       });
 
       const data = await response.json();
-      console.log("OpenAI response:", JSON.stringify(data)); // debugging
       const reply = data.choices?.[0]?.message?.content ?? "Hmmm, try again!";
 
       setMessages((prev) => {

@@ -135,6 +135,13 @@ export default function DripWidget() {
         // QUANTITY
         if (currentStep === 'quantity') {
             const qty = parseInt(value);
+            if (isNaN(qty) || qty < 1) {
+                setResultMessage("Please enter a valid quantity (1 or more).");
+                setErrorReturnStep("quantity");
+                setCurrentStep("error");
+                return;
+            }
+
             if (qty < 20) {
                 setQuoteData(prev => ({...prev, quantity: qty}));
                 setCurrentStep("quantity_upgrade");
@@ -189,8 +196,17 @@ export default function DripWidget() {
             const locations = quoteData.selected_locations ?? [];
             const labels = quoteData.location_labels ?? [];
 
+            const parsed = parseInt(value);
+
+            if (isNaN(parsed) || parsed < 1) {
+                setResultMessage("Please enter a valid number of colors (1 or more).");
+                setErrorReturnStep("colors_per_location");
+                setCurrentStep("error");
+                return;
+            }
+
             const colorsPerLoc = [...(quoteData.colors_per_location ?? []),
-            { location: locations[index], label: labels[index], colors: parseInt(value) }];
+            { location: locations[index], label: labels[index], colors: parsed }];
 
         if (index + 1 < locations.length) {
             setNumberInput("");
